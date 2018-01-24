@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jiacer.gs</groupId>
+    <artifactId>gs-control-center</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>gs-cc-common</module>
+        <module>gs-cc-core</module>
+        <module>gs-cc-api</module>
+        <module>gs-cc-web</module>
+    </modules>
+
+</project>

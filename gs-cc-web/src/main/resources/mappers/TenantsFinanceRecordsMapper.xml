@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fbee.modules.mybatis.dao.TenantsFinanceRecordsMapper">
+	<resultMap id="BaseResultMap"
+		type="com.fbee.modules.mybatis.entity.TenantsFinanceRecordsEntity">
+		<id column="IN_OUT_NO" jdbcType="VARCHAR" property="inOutNo" />
+		<result column="TENANT_ID" jdbcType="INTEGER" property="tenantId" />
+		<result column="STAFF_ID" jdbcType="INTEGER" property="staffId" />
+		<result column="PAY_NO" jdbcType="VARCHAR" property="payNo" />
+		<result column="PAY_TYPE" jdbcType="VARCHAR" property="payType" />
+		<result column="RELATED_TRANS" jdbcType="VARCHAR" property="relatedTrans" />
+		<result column="IN_OUT_CATEGORY" jdbcType="VARCHAR" property="inOutCategory" />
+		<result column="IN_OUT_TYPE" jdbcType="VARCHAR" property="inOutType" />
+		<result column="IN_OUT_MANTISSA" jdbcType="VARCHAR" property="inOutMantissa" />
+		<result column="IN_OUT_OBJECT" jdbcType="VARCHAR" property="inOutObject" />
+		<result column="IN_OUT_AMOUNT" jdbcType="DECIMAL" property="inOutAmount" />
+		<result column="remarks" jdbcType="VARCHAR" property="remarks" />
+		<result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+		<result column="add_account" jdbcType="VARCHAR" property="addAccount" />
+		<result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+		<result column="modify_account" jdbcType="VARCHAR" property="modifyAccount" />
+		<result column="is_usable" jdbcType="VARCHAR" property="isUsable" />
+		<result column="finance_time" jdbcType="TIMESTAMP" property="financeTime" />
+	</resultMap>
+	<sql id="Base_Column_List" >
+    IN_OUT_NO, TENANT_ID, STAFF_ID, PAY_NO, PAY_TYPE, RELATED_TRANS, IN_OUT_CATEGORY, 
+    IN_OUT_TYPE, IN_OUT_MANTISSA, IN_OUT_OBJECT, IN_OUT_AMOUNT, TRANS_TYPE, remarks, 
+    add_time, add_account, modify_time, modify_account, is_usable, status, drawee_id, 
+    payee_id, drawee_type, payee_type,finance_time
+  </sql>
+	<sql id="Base_Column_ListOne">
+		IN_OUT_NO "no", add_time "time", IN_OUT_CATEGORY
+		"category",IN_OUT_AMOUNT "amount", IN_OUT_OBJECT "object",
+		IN_OUT_MANTISSA "mantissa",
+		remarks
+	</sql>
+	<insert id="insert"
+		parameterType="com.fbee.modules.mybatis.entity.TenantsFinanceRecordsEntity">
+		insert into tenants_finance_records
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="inOutNo != null">
+				IN_OUT_NO,
+			</if>
+			<if test="tenantId != null">
+				TENANT_ID,
+			</if>
+			<if test="staffId != null">
+				STAFF_ID,
+			</if>
+			<if test="inOutCategory != null">
+				IN_OUT_CATEGORY,
+			</if>
+			<if test="inOutType != null">
+				IN_OUT_TYPE,
+			</if>
+			<if test="inOutMantissa != null">
+				IN_OUT_MANTISSA,
+			</if>
+			<if test="inOutObject != null">
+				IN_OUT_OBJECT,
+			</if>
+			<if test="inOutAmount != null">
+				IN_OUT_AMOUNT,
+			</if>
+			<if test="remarks != null">
+				remarks,
+			</if>
+			<if test="addTime != null">
+				add_time,
+			</if>
+			<if test="addAccount != null">
+				add_account,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="modifyAccount != null">
+				modify_account,
+			</if>
+			<if test="isUsable != null">
+				is_usable,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="inOutNo != null">
+				#{inOutNo,jdbcType=VARCHAR},
+			</if>
+			<if test="tenantId != null">
+				#{tenantId,jdbcType=INTEGER},
+			</if>
+			<if test="staffId != null">
+				#{staffId,jdbcType=INTEGER},
+			</if>
+			<if test="inOutCategory != null">
+				#{inOutCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="inOutType != null">
+				#{inOutType,jdbcType=VARCHAR},
+			</if>
+			<if test="inOutMantissa != null">
+				#{inOutMantissa,jdbcType=VARCHAR},
+			</if>
+			<if test="inOutObject != null">
+				#{inOutObject,jdbcType=VARCHAR},
+			</if>
+			<if test="inOutAmount != null">
+				#{inOutAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="remarks != null">
+				#{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null">
+				#{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="addAccount != null">
+				#{addAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyAccount != null">
+				#{modifyAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="isUsable != null">
+				#{isUsable,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="update"
+		parameterType="com.fbee.modules.mybatis.entity.TenantsFinanceRecordsEntity">
+		update tenants_finance_records
+		<set>
+			<if test="tenantId != null">
+				TENANT_ID = #{tenantId,jdbcType=INTEGER},
+			</if>
+			<if test="staffId != null">
+				STAFF_ID = #{staffId,jdbcType=INTEGER},
+			</if>
+			<if test="inOutCategory != null">
+				IN_OUT_CATEGORY = #{inOutCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="inOutType != null">
+				IN_OUT_TYPE = #{inOutType,jdbcType=VARCHAR},
+			</if>
+			<if test="inOutMantissa != null">
+				IN_OUT_MANTISSA = #{inOutMantissa,jdbcType=VARCHAR},
+			</if>
+			<if test="inOutObject != null">
+				IN_OUT_OBJECT = #{inOutObject,jdbcType=VARCHAR},
+			</if>
+			<if test="inOutAmount != null">
+				IN_OUT_AMOUNT = #{inOutAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null">
+				add_time = #{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="addAccount != null">
+				add_account = #{addAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyAccount != null">
+				modify_account = #{modifyAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="isUsable != null">
+				is_usable = #{isUsable,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where IN_OUT_NO = #{inOutNo,jdbcType=VARCHAR}
+	</update>
+	<select id="getById" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_ListOne" />
+		from tenants_finance_records
+		where TENANT_ID =
+		#{tenantId,jdbcType=INTEGER}
+	</select>
+	<select id="getByTenantsIncomeId" parameterType="java.lang.Integer"
+		resultType="java.lang.String">
+		select sum(IN_OUT_AMOUNT) "income"
+		from tenants_finance_records
+		where TENANT_ID =
+		#{tenantId,jdbcType=INTEGER}
+		and IN_OUT_TYPE='0'
+	</select>
+	<select id="getCountById" parameterType="com.fbee.modules.mybatis.entity.TenantsFinanceRecordsEntity"
+		resultType="java.lang.Integer">
+		select count(0)
+		from tenants_finance_records
+		where TENANT_ID =#{tenantId,jdbcType=INTEGER}
+		<if test="startTime != null and startTime !=''">
+			and add_time <![CDATA[>]]> #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime !=null and endTime !=''">
+			and add_time <![CDATA[<]]> #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="inOutType !=null and inOutType !=''">
+			and IN_OUT_TYPE=#{inOutType,jdbcType=VARCHAR}
+		</if>
+		<if test="inOutNo !=null and inOutNo !=''">
+			and IN_OUT_No=#{inOutNo,jdbcType=VARCHAR}
+		</if>
+	</select>
+	<select id="getByTenantsExpenseId" parameterType="java.lang.Integer"
+		resultType="java.lang.String">
+		select  sum(IN_OUT_AMOUNT) "expense"
+		from tenants_finance_records
+		where TENANT_ID =
+		#{tenantId,jdbcType=INTEGER}
+		and IN_OUT_TYPE='1'
+	</select>
+	<select id="getByTenantsId"
+		parameterType="com.fbee.modules.mybatis.entity.TenantsFinanceRecordsEntity"
+		resultType="java.util.Map">
+		select
+		<include refid="Base_Column_ListOne" />
+		from tenants_finance_records
+		where TENANT_ID =
+		#{tenantId,jdbcType=INTEGER}
+		<if test="startTime != null and startTime !=''">
+			and add_time <![CDATA[>]]> #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime !=null and endTime !=''">
+			and add_time <![CDATA[<]]> #{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="inOutType !=null and inOutType !=''">
+			and IN_OUT_TYPE=#{inOutType,jdbcType=VARCHAR}
+		</if>
+		<if test="inOutNo !=null and inOutNo !=''">
+			and IN_OUT_No=#{inOutNo,jdbcType=VARCHAR}
+		</if>
+		limit #{pageNumber,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+
+	<select id="getStaffFinances" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tenants_finance_records
+		where STAFF_ID = #{staffId,jdbcType=INTEGER}
+		order by add_time desc
+		limit 5
+	</select>
+	
+	<!-- 清算更新状态 -->
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+
+		select
+		<include refid="Base_Column_List" />
+		from tenants_finance_records
+		where IN_OUT_NO = #{inOutNo,jdbcType=VARCHAR}
+	</select>
+	<select id="selectByRelatedTrans" resultMap="BaseResultMap" parameterType="java.lang.String" >
+		select
+		<include refid="Base_Column_List" />
+		from tenants_finance_records
+		where RELATED_TRANS = #{relatedTrans}
+	</select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.fbee.modules.mybatis.model.TenantsFinanceRecords" >
+   
+    update tenants_finance_records
+    <set >
+      <if test="tenantId != null" >
+        TENANT_ID = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="staffId != null" >
+        STAFF_ID = #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="payNo != null" >
+        PAY_NO = #{payNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null" >
+        PAY_TYPE = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedTrans != null" >
+        RELATED_TRANS = #{relatedTrans,jdbcType=VARCHAR},
+      </if>
+      <if test="inOutCategory != null" >
+        IN_OUT_CATEGORY = #{inOutCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="inOutType != null" >
+        IN_OUT_TYPE = #{inOutType,jdbcType=VARCHAR},
+      </if>
+      <if test="inOutMantissa != null" >
+        IN_OUT_MANTISSA = #{inOutMantissa,jdbcType=VARCHAR},
+      </if>
+      <if test="inOutObject != null" >
+        IN_OUT_OBJECT = #{inOutObject,jdbcType=VARCHAR},
+      </if>
+      <if test="inOutAmount != null" >
+        IN_OUT_AMOUNT = #{inOutAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="transType != null" >
+        TRANS_TYPE = #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addAccount != null" >
+        add_account = #{addAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAccount != null" >
+        modify_account = #{modifyAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="isUsable != null" >
+        is_usable = #{isUsable,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="draweeId != null" >
+        drawee_id = #{draweeId,jdbcType=INTEGER},
+      </if>
+      <if test="payeeId != null" >
+        payee_id = #{payeeId,jdbcType=INTEGER},
+      </if>
+      <if test="draweeType != null" >
+        drawee_type = #{draweeType,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeType != null" >
+        payee_type = #{payeeType,jdbcType=VARCHAR},
+      </if>
+      <if test="financeTime != null" >
+        finance_time = #{financeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where IN_OUT_NO = #{inOutNo,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+  <!-- 总控平台-清算总数      优化 @zsq 2017-07-01    -->
+	<select id="getClearCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select 
+			count(0)
+		from   tenants_finance_records a left join tenants_trade_records b on a.IN_OUT_NO = b.IN_OUT_NO LEFT JOIN trade_records c on a.PAY_NO = c.TRADE_FLOW_NO 
+		LEFT JOIN tenants_apps s on b.TENANT_ID = s.TENANT_ID
+	WHERE
+			a.PAY_TYPE in(05,10)
+		and b.is_usable=1
+		and b.TRADE_TYPE in (02,09)
+		and c.TRADE_TYPE in (02,03)
+		<if test="tradeTimeLeft != null and tradeTimeLeft !=''">
+			and DATE_FORMAT(a.add_time, '%Y-%m-%d') <![CDATA[>=]]> #{tradeTimeLeft,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tradeTimeRight !=null and tradeTimeRight !=''">
+			and DATE_FORMAT(a.add_time, '%Y-%m-%d') <![CDATA[<=]]> #{tradeTimeRight,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tradeType !=null and tradeType !=''">
+			and b.TRADE_TYPE=#{tradeType,jdbcType=VARCHAR}
+		</if>
+		<if test="tradeChannel !=null and tradeChannel !=''">
+			and c.TRADE_CHANNEL=#{tradeChannel,jdbcType=VARCHAR}
+		</if>
+		<if test="status !=null and status !=''">
+			and  a.STATUS=#{status,jdbcType=VARCHAR}
+		</if>
+		order by a.add_time desc
+	</select>
+  <!-- 总控平台-清算列表查询    优化 @zsq 2017-07-01 -->
+	<select id="getClearList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+			 DATE_FORMAT(a.add_time,'%Y-%m-%d %H:%i:%s') "tradeTime",
+				s.WEBSITE_NAME 'tenantName',
+				a.IN_OUT_AMOUNT 'tradeAmount',
+				FUNC_GET_CODE_NAME("TRADE_TYPE" , b.TRADE_TYPE, "1") 'tradeType',
+				FUNC_GET_CODE_NAME("TRADE_CHANNEL" , c.TRADE_CHANNEL, "1") 'tradeChannel',
+				a.modify_time  'modifyTime',
+				FUNC_GET_CODE_NAME("RECODR_STATUS" , b.STATUS, "1") 'status',
+				ifnull(b.REMARKS,"--") 'remarks',
+				b.TRADE_NO  'tradeNo',
+				s.TENANT_ID 'tenantId',
+				a.IN_OUT_NO 'inOutNo',
+				c.ORDER_NO 'orderNo',
+				c.TRADE_FLOW_NO 'tradeFlowNo'
+			FROM
+				tenants_finance_records a left join tenants_trade_records b on a.IN_OUT_NO = b.IN_OUT_NO LEFT JOIN trade_records c on a.PAY_NO = c.TRADE_FLOW_NO 
+				LEFT JOIN tenants_apps s on b.TENANT_ID = s.TENANT_ID
+				
+				WHERE
+				a.PAY_TYPE in(05,10)
+				and b.is_usable=1
+				and b.TRADE_TYPE in (02,09)
+				and c.TRADE_TYPE in (02,03)
+		<if test="tradeTimeLeft != null and tradeTimeLeft !=''">
+			and DATE_FORMAT(a.add_time, '%Y-%m-%d') <![CDATA[>=]]> #{tradeTimeLeft,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tradeTimeRight !=null and tradeTimeRight !=''">
+			and DATE_FORMAT(a.add_time, '%Y-%m-%d') <![CDATA[<=]]> #{tradeTimeRight,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tradeType !=null and tradeType !=''">
+			and b.TRADE_TYPE=#{tradeType,jdbcType=VARCHAR}
+		</if>
+		<if test="tradeChannel !=null and tradeChannel !=''">
+			and c.TRADE_CHANNEL=#{tradeChannel,jdbcType=VARCHAR}
+		</if>
+		<if test="status !=null and status !=''">
+			and  a.STATUS=#{status,jdbcType=VARCHAR}
+		</if>
+		order by a.add_time desc
+		<if test="pageNumber != null">
+		limit #{pageNumber,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+		</if>
+	</select>
+	
+	<!-- 总控平台-财务流水总条数 -->
+	<select id="getCount" parameterType="com.fbee.modules.mybatis.entity.TenantsFinanceRecordsEntity"
+		resultType="java.lang.Integer">
+		select 
+				count(0)
+		from 
+				tenants_finance_records a 
+				LEFT JOIN
+				trade_records b
+				on a.PAY_NO=b.TRADE_FLOW_NO
+				LEFT JOIN
+				tenants_apps c
+				ON
+				a.TENANT_ID=c.TENANT_ID
+				WHERE
+				1=1
+		<include refid="Query_Funds_List" />
+	</select>
+	
+	<!-- 总控平台-财务流水信息 -->
+	<select id="getTenantsRecordList"
+		parameterType="com.fbee.modules.mybatis.entity.TenantsFinanceRecordsEntity"
+		resultType="java.util.Map">
+		select
+				a.IN_OUT_NO, a.STAFF_ID, a.PAY_NO, 
+				FUNC_GET_CODE_NAME("BUSS_TYPE" , a.PAY_TYPE, "1") "payType",
+				 a.RELATED_TRANS,a.IN_OUT_CATEGORY, 
+    			a.IN_OUT_TYPE, a.IN_OUT_MANTISSA, a.IN_OUT_OBJECT, a.IN_OUT_AMOUNT, a.TRANS_TYPE,
+    			 a.remarks, 
+    			 a.is_usable, 
+    			DATE_FORMAT(a.add_time, '%Y-%m-%d %H:%i:%s') "addTime",
+    			a.STATUS  "status",  
+				FUNC_GET_CODE_NAME("TRADE_CHANNEL" , b.TRADE_CHANNEL, "1") "tradeChannel",
+				b.ORDER_NO,
+				b.TRADE_FLOW_NO,
+				c.WEBSITE_NAME
+				
+				from 
+					tenants_finance_records a 
+				LEFT JOIN
+				trade_records b
+				on a.PAY_NO=b.TRADE_FLOW_NO
+				LEFT JOIN
+				tenants_apps c
+				ON
+				a.TENANT_ID=c.TENANT_ID
+				WHERE
+				1=1
+			<include refid="Query_Funds_List" />
+		order by a.add_time desc
+		limit #{pageNumber,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+	<sql id="Query_Funds_List">
+		<if test="tradeTimeLeft != null and tradeTimeLeft !=''">
+			and DATE_FORMAT(a.add_time,'%Y-%m-%d') <![CDATA[>=]]> #{tradeTimeLeft,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tradeTimeRight !=null and tradeTimeRight !=''">
+			and  DATE_FORMAT(a.add_time,'%Y-%m-%d') <![CDATA[<=]]> #{tradeTimeRight,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tenantName !=null and tenantName !=''">
+			and c.WEBSITE_NAME LIKE concat(concat('%',#{tenantName}),'%')
+		</if>
+		<if test="tradeType !=null and tradeType !=''">
+			and  a.PAY_TYPE=#{tradeType,jdbcType=VARCHAR}
+		</if>
+		<if test="tradeChannel !=null and tradeChannel !=''">
+			and  b.TRADE_CHANNEL=#{tradeChannel,jdbcType=VARCHAR}
+		</if>
+		<if test="orderNo !=null and orderNo !=''">
+			and  b.ORDER_NO=#{orderNo,jdbcType=VARCHAR}
+		</if>
+		<if test="tradeFlowNo !=null and tradeFlowNo !=''">
+			and  b.TRADE_FLOW_NO=#{tradeFlowNo,jdbcType=VARCHAR}
+		</if>
+	</sql>
+</mapper>

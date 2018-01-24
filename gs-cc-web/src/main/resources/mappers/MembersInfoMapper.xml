@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fbee.modules.mybatis.dao.MembersInfoMapper">
+  <resultMap id="BaseResultMap" type="com.fbee.modules.mybatis.model.MembersInfo">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="provice" jdbcType="VARCHAR" property="provice" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="county" jdbcType="VARCHAR" property="county" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="weixin" jdbcType="VARCHAR" property="weixin" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="login_password" jdbcType="VARCHAR" property="loginPassword" />
+    <result column="user_status" jdbcType="VARCHAR" property="userStatus" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
+    <result column="pwd_try_count" jdbcType="INTEGER" property="pwdTryCount" />
+    <result column="is_locked" jdbcType="VARCHAR" property="isLocked" />
+    <result column="lock_time" jdbcType="TIMESTAMP" property="lockTime" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="first_wrong_time" jdbcType="TIMESTAMP" property="firstWrongTime" />
+    <result column="is_usable" jdbcType="VARCHAR" property="isUsable" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, name, mobile, provice, city, county, address, weixin, qq, sex, salt, login_password, 
+    user_status, open_id, register_time, pwd_try_count, is_locked, lock_time, last_login_time, 
+    add_time, modify_time, first_wrong_time, is_usable
+  </sql>
+  <select id="selectByExample" parameterType="com.fbee.modules.mybatis.model.MembersInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from members_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from members_info
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from members_info
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fbee.modules.mybatis.model.MembersInfoExample">
+    delete from members_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fbee.modules.mybatis.model.MembersInfo">
+    insert into members_info (ID, name, mobile, 
+      provice, city, county, 
+      address, weixin, qq, 
+      sex, salt, login_password, 
+      user_status, open_id, register_time, 
+      pwd_try_count, is_locked, lock_time, 
+      last_login_time, add_time, modify_time, 
+      first_wrong_time, is_usable)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{provice,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, 
+      #{userStatus,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{registerTime,jdbcType=TIMESTAMP}, 
+      #{pwdTryCount,jdbcType=INTEGER}, #{isLocked,jdbcType=VARCHAR}, #{lockTime,jdbcType=TIMESTAMP}, 
+      #{lastLoginTime,jdbcType=TIMESTAMP}, #{addTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{firstWrongTime,jdbcType=TIMESTAMP}, #{isUsable,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fbee.modules.mybatis.model.MembersInfo">
+    insert into members_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="provice != null">
+        provice,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="county != null">
+        county,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="weixin != null">
+        weixin,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="loginPassword != null">
+        login_password,
+      </if>
+      <if test="userStatus != null">
+        user_status,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="registerTime != null">
+        register_time,
+      </if>
+      <if test="pwdTryCount != null">
+        pwd_try_count,
+      </if>
+      <if test="isLocked != null">
+        is_locked,
+      </if>
+      <if test="lockTime != null">
+        lock_time,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="firstWrongTime != null">
+        first_wrong_time,
+      </if>
+      <if test="isUsable != null">
+        is_usable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="provice != null">
+        #{provice,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null">
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null">
+        #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pwdTryCount != null">
+        #{pwdTryCount,jdbcType=INTEGER},
+      </if>
+      <if test="isLocked != null">
+        #{isLocked,jdbcType=VARCHAR},
+      </if>
+      <if test="lockTime != null">
+        #{lockTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstWrongTime != null">
+        #{firstWrongTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isUsable != null">
+        #{isUsable,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fbee.modules.mybatis.model.MembersInfoExample" resultType="java.lang.Integer">
+    <!--
+      WARNING - @mbggenerated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      This element was generated on Tue Mar 14 11:10:33 CST 2017.
+    -->
+    select count(*) from members_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      This element was generated on Tue Mar 14 11:10:33 CST 2017.
+    -->
+    update members_info
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null">
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provice != null">
+        provice = #{record.provice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null">
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.county != null">
+        county = #{record.county,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weixin != null">
+        weixin = #{record.weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qq != null">
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salt != null">
+        salt = #{record.salt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginPassword != null">
+        login_password = #{record.loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userStatus != null">
+        user_status = #{record.userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openId != null">
+        open_id = #{record.openId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registerTime != null">
+        register_time = #{record.registerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pwdTryCount != null">
+        pwd_try_count = #{record.pwdTryCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.isLocked != null">
+        is_locked = #{record.isLocked,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lockTime != null">
+        lock_time = #{record.lockTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastLoginTime != null">
+        last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.addTime != null">
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyTime != null">
+        modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.firstWrongTime != null">
+        first_wrong_time = #{record.firstWrongTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isUsable != null">
+        is_usable = #{record.isUsable,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      This element was generated on Tue Mar 14 11:10:33 CST 2017.
+    -->
+    update members_info
+    set ID = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      provice = #{record.provice,jdbcType=VARCHAR},
+      city = #{record.city,jdbcType=VARCHAR},
+      county = #{record.county,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      weixin = #{record.weixin,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      salt = #{record.salt,jdbcType=VARCHAR},
+      login_password = #{record.loginPassword,jdbcType=VARCHAR},
+      user_status = #{record.userStatus,jdbcType=VARCHAR},
+      open_id = #{record.openId,jdbcType=VARCHAR},
+      register_time = #{record.registerTime,jdbcType=TIMESTAMP},
+      pwd_try_count = #{record.pwdTryCount,jdbcType=INTEGER},
+      is_locked = #{record.isLocked,jdbcType=VARCHAR},
+      lock_time = #{record.lockTime,jdbcType=TIMESTAMP},
+      last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      first_wrong_time = #{record.firstWrongTime,jdbcType=TIMESTAMP},
+      is_usable = #{record.isUsable,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fbee.modules.mybatis.model.MembersInfo">
+    update members_info
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="provice != null">
+        provice = #{provice,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null">
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null">
+        login_password = #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        user_status = #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null">
+        register_time = #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pwdTryCount != null">
+        pwd_try_count = #{pwdTryCount,jdbcType=INTEGER},
+      </if>
+      <if test="isLocked != null">
+        is_locked = #{isLocked,jdbcType=VARCHAR},
+      </if>
+      <if test="lockTime != null">
+        lock_time = #{lockTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstWrongTime != null">
+        first_wrong_time = #{firstWrongTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isUsable != null">
+        is_usable = #{isUsable,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fbee.modules.mybatis.model.MembersInfo">
+    <!--
+      WARNING - @mbggenerated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      This element was generated on Tue Mar 14 11:10:33 CST 2017.
+    -->
+    update members_info
+    set name = #{name,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      provice = #{provice,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      login_password = #{loginPassword,jdbcType=VARCHAR},
+      user_status = #{userStatus,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      register_time = #{registerTime,jdbcType=TIMESTAMP},
+      pwd_try_count = #{pwdTryCount,jdbcType=INTEGER},
+      is_locked = #{isLocked,jdbcType=VARCHAR},
+      lock_time = #{lockTime,jdbcType=TIMESTAMP},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      first_wrong_time = #{firstWrongTime,jdbcType=TIMESTAMP},
+      is_usable = #{isUsable,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+	<insert id="insertMember" parameterType="com.fbee.modules.mybatis.entity.MembersInfoEntity">
+	    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+		   SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		insert into members_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="mobile != null">
+				mobile,
+			</if>
+			<if test="salt != null">
+				salt,
+			</if>
+			<if test="loginPassword != null">
+				login_password,
+			</if>
+			<if test="userStatus != null">
+				user_status,
+			</if>
+			<if test="openId != null">
+				open_id,
+			</if>
+			<if test="registerTime != null">
+				register_time,
+			</if>
+			<if test="pwdTryCount != null">
+				pwd_try_count,
+			</if>
+			<if test="isLocked != null">
+				is_locked,
+			</if>
+			<if test="lockTime != null">
+				lock_time,
+			</if>
+			<if test="lastLoginTime != null">
+				last_login_time,
+			</if>
+			<if test="addTime != null">
+				add_time,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="firstWrongTime != null">
+				first_wrong_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="mobile != null">
+				#{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="salt != null">
+				#{salt,jdbcType=VARCHAR},
+			</if>
+			<if test="loginPassword != null">
+				#{loginPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userStatus != null">
+				#{userStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="openId != null">
+				#{openId,jdbcType=VARCHAR},
+			</if>
+			<if test="registerTime != null">
+				#{registerTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="pwdTryCount != null">
+				#{pwdTryCount,jdbcType=INTEGER},
+			</if>
+			<if test="isLocked != null">
+				#{isLocked,jdbcType=VARCHAR},
+			</if>
+			<if test="lockTime != null">
+				#{lockTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastLoginTime != null">
+				#{lastLoginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="addTime != null">
+				#{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="firstWrongTime != null">
+				#{firstWrongTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="com.fbee.modules.mybatis.entity.MembersInfoEntity">
+		update members_info
+		<set>
+			<if test="mobile != null">
+				mobile = #{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="salt != null">
+				salt = #{salt,jdbcType=VARCHAR},
+			</if>
+			<if test="loginPassword != null">
+				login_password = #{loginPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userStatus != null">
+				user_status = #{userStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="openId != null">
+				open_id = #{openId,jdbcType=VARCHAR},
+			</if>
+			<if test="registerTime != null">
+				register_time = #{registerTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="pwdTryCount != null">
+				pwd_try_count = #{pwdTryCount,jdbcType=INTEGER},
+			</if>
+			<if test="isLocked != null">
+				is_locked = #{isLocked,jdbcType=VARCHAR},
+			</if>
+			<if test="lockTime != null">
+				lock_time = #{lockTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastLoginTime != null">
+				last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="addTime != null">
+				add_time = #{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="firstWrongTime != null">
+				first_wrong_time = #{firstWrongTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="getByMobile" parameterType="java.lang.String" resultMap="BaseResultMap">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from members_info
+	    where mobile = #{mobile,jdbcType=VARCHAR}
+	    and user_status ='00'
+	    and is_locked='0'
+	</select>
+	<!-- 总控开始 -->
+  	<sql id="customerCondition">
+		<if test="customerName != null and customerName !='' ">
+				and a.name like '%${customerName}%'
+		</if>
+		<if test="customerMobile != null and customerMobile !='' ">
+				and a.mobile = #{customerMobile}
+		</if>
+		<if test="serviceProvice != null and serviceProvice !='' ">
+				and a.provice = #{serviceProvice}
+		</if>
+		<if test="serviceCity != null and serviceCity !='' ">
+				and a.city = #{serviceCity}
+		</if>
+		<if test="serviceCounty != null and serviceCounty != '' ">
+				and a.county = #{serviceCounty}
+		</if>
+	</sql>
+  
+	<select id="getzkCustomerQueryCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select
+			count(0)
+		from 
+			members_info a 
+		where 
+			 a.user_status='00'
+			and a.is_locked='0'
+		<include refid="customerCondition"/>
+	</select>
+	<select id="getzkCustomerQueryList" parameterType="java.util.Map" resultType="com.fbee.modules.mybatis.entity.MembersInfoEntity">
+		select
+				a.ID 'id',
+				a.register_time 'registerTime',
+				a.mobile 'mobile',
+				a.name 'name',
+				a.sex 'sex',
+				a.provice 'provice',
+				a.city 'city',
+				a.county 'county',
+				a.last_login_time 'lastLoginTime'
+		from 
+			  members_info a 
+		where 
+			 a.user_status='00'
+			and a.is_locked='0'
+		<include refid="customerCondition"/>
+		limit #{pageNumber},#{pageSize}
+	</select>
+	<!-- 总控平台结束 -->
+  	
+	
+</mapper>

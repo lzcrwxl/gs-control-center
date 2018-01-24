@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fbee.modules.mybatis.dao.OrderShareInfoMapper">
+  <resultMap id="BaseResultMap" type="com.fbee.modules.mybatis.model.OrderShareInfo">
+    <id column="ORDER_NO" jdbcType="VARCHAR" property="orderNo" />
+    <result column="TENANT_ID" jdbcType="INTEGER" property="tenantId" />
+    <result column="ORDER_NAME" jdbcType="VARCHAR" property="orderName" />
+    <result column="AGE_REQUIREMENT" jdbcType="VARCHAR" property="ageRequirement" />
+    <result column="SALARY_SITUATION" jdbcType="VARCHAR" property="salarySituation" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="SINGLE_REWARD" jdbcType="VARCHAR" property="singleReward" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="add_account" jdbcType="VARCHAR" property="addAccount" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modify_account" jdbcType="VARCHAR" property="modifyAccount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ORDER_NO, TENANT_ID, ORDER_NAME, AGE_REQUIREMENT, SALARY_SITUATION, REMARK, STATUS, 
+    SINGLE_REWARD, add_time, add_account, modify_time, modify_account
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_share_info
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from order_share_info
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fbee.modules.mybatis.model.OrderShareInfo">
+    insert into order_share_info (ORDER_NO, TENANT_ID, ORDER_NAME, 
+      AGE_REQUIREMENT, SALARY_SITUATION, REMARK, 
+      STATUS, SINGLE_REWARD, add_time, 
+      add_account, modify_time, modify_account
+      )
+    values (#{orderNo,jdbcType=VARCHAR}, #{tenantId,jdbcType=INTEGER}, #{orderName,jdbcType=VARCHAR}, 
+      #{ageRequirement,jdbcType=VARCHAR}, #{salarySituation,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{singleReward,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{addAccount,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{modifyAccount,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fbee.modules.mybatis.model.OrderShareInfo">
+    insert into order_share_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderNo != null and orderNo != ''">
+        ORDER_NO,
+      </if>
+      <if test="tenantId != null and tenantId != ''">
+        TENANT_ID,
+      </if>
+      <if test="orderName != null and orderName != ''">
+        ORDER_NAME,
+      </if>
+      <if test="ageRequirement != null and ageRequirement != ''">
+        AGE_REQUIREMENT,
+      </if>
+      <if test="salarySituation != null and salarySituation != ''">
+        SALARY_SITUATION,
+      </if>
+      <if test="remark != null and remark != ''">
+        REMARK,
+      </if>
+      <if test="status != null and status != ''">
+        STATUS,
+      </if>
+      <if test="singleReward != null and singleReward != ''">
+        SINGLE_REWARD,
+      </if>
+      <if test="addTime != null and addTime != ''">
+        add_time,
+      </if>
+      <if test="addAccount != null and addAccount != ''">
+        add_account,
+      </if>
+      <if test="modifyTime != null and modifyTime != ''">
+        modify_time,
+      </if>
+      <if test="modifyAccount != null and modifyAccount != ''">
+        modify_account,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderNo != null and orderNo != ''">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null and tenantId != ''">
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="orderName != null and orderName != ''">
+        #{orderName,jdbcType=VARCHAR},
+      </if>
+      <if test="ageRequirement != null and ageRequirement != ''">
+        #{ageRequirement,jdbcType=VARCHAR},
+      </if>
+      <if test="salarySituation != null and salarySituation != ''">
+        #{salarySituation,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null and remark != ''">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null and status != ''">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="singleReward != null and singleReward != ''">
+        #{singleReward,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null and addTime != ''">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addAccount != null and addAccount != ''">
+        #{addAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null and modifyTime != ''">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAccount != null and modifyAccount != ''">
+        #{modifyAccount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fbee.modules.mybatis.model.OrderShareInfo">
+    update order_share_info
+    <set>
+      <if test="tenantId != null">
+        TENANT_ID = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="orderName != null">
+        ORDER_NAME = #{orderName,jdbcType=VARCHAR},
+      </if>
+      <if test="ageRequirement != null">
+        AGE_REQUIREMENT = #{ageRequirement,jdbcType=VARCHAR},
+      </if>
+      <if test="salarySituation != null">
+        SALARY_SITUATION = #{salarySituation,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="singleReward != null">
+        SINGLE_REWARD = #{singleReward,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addAccount != null">
+        add_account = #{addAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAccount != null">
+        modify_account = #{modifyAccount,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fbee.modules.mybatis.model.OrderShareInfo">
+    update order_share_info
+    set TENANT_ID = #{tenantId,jdbcType=INTEGER},
+      ORDER_NAME = #{orderName,jdbcType=VARCHAR},
+      AGE_REQUIREMENT = #{ageRequirement,jdbcType=VARCHAR},
+      SALARY_SITUATION = #{salarySituation,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      SINGLE_REWARD = #{singleReward,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      add_account = #{addAccount,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      modify_account = #{modifyAccount,jdbcType=VARCHAR}
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 根据订单流水号获取分享信息 -->
+  <select id="selectShareInfoByOrderNo" parameterType="java.lang.String" resultType="java.util.Map"> 
+    SELECT 
+	   a.add_time 'shareDate',
+	   d.SINGLE_REWARD 'singleReward',
+	   b.TENANT_NAME 'tenantName',
+	   c.STAFF_NAME 'staffName',
+	   c.MOBILE 'mobile',
+	   d.STATUS 'status'
+	FROM
+	   order_share_staff_info a,
+	   tenants_info b,
+	   tenants_staffs_info c,
+	   order_share_info d
+	WHERE
+	   a.TENANT_ID = b.TENANT_ID
+	AND a.STAFF_ID = c.STAFF_ID
+	AND a.ORDER_NO = d.ORDER_NO
+	AND d.ORDER_NO = #{orderNo}
+  </select>
+  
+  <select id="selectTaoShareInfoByOrderNo" parameterType="java.lang.String" resultType="java.util.Map">
+    SELECT 
+	   a.add_time 'shareDate',
+	   d.SINGLE_REWARD 'singleReward',
+	   b.TENANT_NAME 'tenantName',
+	   c.STAFF_NAME 'staffName',
+	   c.MOBILE 'mobile',
+	   d.STATUS 'status',
+	   d.ORDER_NAME 'orderName',
+	   d.AGE_REQUIREMENT 'ageRequirement',
+	   d.SALARY_SITUATION 'salarySituation',
+	   d.REMARK 'remark'
+	FROM
+	   order_share_staff_info a,
+	   tenants_info b,
+	   tenants_staffs_info c,
+	   order_share_info d
+	WHERE
+	   a.TENANT_ID = b.TENANT_ID
+	AND a.STAFF_ID = c.STAFF_ID
+	AND a.ORDER_NO = d.ORDER_NO
+	AND d.ORDER_NO = #{orderNo}
+  </select>
+  
+</mapper>

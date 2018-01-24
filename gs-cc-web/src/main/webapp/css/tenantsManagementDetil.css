@@ -1,0 +1,438 @@
+/* .frame .base-info {width: 100%;min-width: 1000px;margin-top: 34px;296px}
+.frame .base-info .mode {width: 220px;margin: 0 auto;}
+.frame .base-info .mode div p {width: 110px;height: 24px;line-height: 24px;text-align: center;margin: 14px auto 0 auto;}
+.frame .base-info .mode .pc {float: left;}
+.frame .base-info  .wap {float: right;}
+.frame .base-info  .wap div {width: 230px;height: 115px;}
+.frame .base-info  .wap canvas {width: 100%;height: 100%;}
+.frame .base-info  .wap p {}
+基本信息
+.frame .base-info table {width: 100%;margin: 0 auto;}
+.frame .base-info table tr {height: 20px;}
+.frame .base-info table td {vertical-align: top;}
+.frame .base-info table tr td:first-child {color: #808080;}
+.frame .base-info table .ms-validation td {color: #FF411B!important;padding-left: 68px;}
+账户信息
+.frame .account-info table {width: 100%;margin: 0 auto;}
+.frame .account-info table tr {height: 20px;}
+.frame .account-info table td {vertical-align: top;}
+.frame .account-info table tr td:first-child {color: #808080;}
+.frame .account-info table .ms-validation td {color: #FF411B!important;padding-left: 68px;}
+会员信息
+.frame .member-info table {width: 100%;margin: 0 auto;}
+.frame .member-info table tr {height: 20px;}
+.frame .member-info table td {vertical-align: top;}
+.frame .member-info table tr td:first-child {color: #808080;}
+.frame .member-info table .ms-validation td {color: #FF411B!important;padding-left: 68px;}
+主体信息
+.frame .main-info table {width: 100%;margin: 0 auto;}
+.frame .main-info table tr {height: 20px;}
+.frame .main-info table td {vertical-align: top;}
+.frame .main-info table tr td:first-child {color: #808080;}
+.frame .main-info table .ms-validation td {color: #FF411B!important;padding-left: 68px;}
+
+ */
+ .naviLeft ul {margin-top: 30px;}
+.naviLeft ul li {height: 44px;line-height: 44px;vertical-align: top;cursor: pointer;margin-bottom: 5px;}
+.naviLeft ul .nl_on {background-color: #FFF;}
+.naviLeft ul .nl_on>a {color: #0A7EE3!important;}
+.naviLeft ul .nl_on>a em {background-image: url(../image/Satyr_on.png)!important;}
+.naviLeft ul li a {display: block;width: 128px;padding: 0 40px;text-align: right; font-size: 16px;position: relative;}
+.naviLeft ul li a:visited {color: #333333;}
+.naviLeft ul li a em {background-image: url(../image/Satyr.png);position: absolute;top: 12px;left: 40px;}
+.naviLeft ul li .ddgl em {display:inline-block;background-position: -100px 0px; width: 20px; height: 20px;}
+.naviLeft ul li .yygl em {display:inline-block;background-position: -120px 0px; width: 20px; height: 20px;}
+.naviLeft ul li:hover a em {background-image: url(../image/Satyr_on.png)!important;}
+.naviLeft ul li:hover {background-color: #FFF;}
+.naviLeft ul li:hover>a {color: #0A7EE3;}
+.naviLeft ul .beeshare-btn div {display: none;}
+.naviLeft ul .beeshare-btn div a {display: block;height: 36px;line-height: 36px;background-color: #FFFFFF;margin-top: 1px;}
+.naviLeft ul .beeshare-btn div a:hover {color: #0A7EE3;}
+ .info_box {
+ 	padding: 0 15px 35px 15px; 
+    margin: 18px; 
+ }
+.naviLeft,.frame_right{
+ 	margin-top: 34px;
+ }
+.naviLeft {
+    width: 188px;
+    background-color: #EBEFF8;
+    float: left;
+}
+.frame_right{
+	position:relative;
+	display:inline-block;
+	padding:0;
+ 	margin:34px 0 0;
+ 	width: 100%;
+}
+.tenantManagement {
+    padding-left: 188px;
+    /* float: left; */
+}
+.frame_left{
+	display:inline-block;
+	width:18%;
+	height:300px;
+}
+.bottom_menu {
+    position: fixed;
+    bottom: 0px;
+	left:18%;
+    height: 50px;
+    background-color: #9b9292;
+}
+.bottom_menu span {
+    width: 90px;
+    float:left;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+	background-color: #0A7EE3;
+	cursor:pointer;
+	margin-right: 15px;
+}
+.bottom_menu input {
+    width: 90px;
+    float:left;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+	background-color: #0A7EE3;
+	cursor:pointer;
+	margin-right: 15px;
+}
+.bottom_menu span.cancle_bt{
+	    background-color: #DBDBDB;
+}
+ .base-info {/*296px*/}
+.afterEditing{
+	display:none;
+}
+.afterEditing input[type="text"] {
+    height: 24px;
+    width: 168px;
+}
+.afterEditing select {
+    height: 24px;
+    width: 70px;
+}
+.info_title {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+.blocked{
+	position:absolute;
+	right:35px;
+	top:20px;
+	padding: 0 6px;
+    background-color: #f2f1f1;
+    border: 1px solid #808080;
+    border-radius: 4px;
+	cursor: pointer;
+}
+.unlock{
+	position:absolute;
+	right:35px;
+	top:20px;
+	padding: 0 6px;
+    background-color: #f2f1f1;
+    border: 1px solid #808080;
+    border-radius: 4px;
+	cursor: pointer;
+}
+.base_info_box {
+    overflow: hidden;
+	padding: 25px 0;
+}
+.mendian_logo{
+	width: 20%;
+    text-align: center;
+    float: left;
+    min-height: 1px;
+    position: relative;
+}
+.logo_input{
+	position:absolute;
+	top:0px;
+	left:50%;
+	margin-left:-90px;
+    width: 180px;
+    height: 180px;
+	border:1px solid #ccc;
+	display:block;
+}
+.mendian_logo input {
+    width: 100%;
+    height: 100%;
+    -moz-opacity: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+	cursor:pointer;
+}
+.mendian_logo img {
+    vertical-align: top;
+    width: 180px;
+    height: 180px;
+}
+.base_info{
+	width:60%;
+	float:left;
+}
+.base_info p {
+    padding-left: 20px;
+	margin-top:10px;
+	line-height: 24px;
+}
+.base_info p i {
+    display: inline-block;
+    vertical-align: top;
+}
+
+i.maritalStatus_sp {
+    margin-left: 142px;
+}
+.base_info p i label {
+    display: inline-block;
+    width: 90px;
+    margin-right: 12px;
+	color:#808080;
+}
+.base_info p i span i{
+	color:#808080;
+}
+a.reset {
+    padding: 0 6px;
+    background-color: #f2f1f1;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    margin-left: 7px;
+	    cursor: pointer;
+}
+.wap{
+	width:20%;
+	float:left;
+	text-align:center;
+}
+.wap img{
+	 vertical-align: top;
+    width: 140px;
+    height: 140px;
+}
+.wap p {
+    font-size: 16px;
+    line-height: 30px;
+}
+.base_in tr td.{
+
+}
+.frame .base-info  .wap {float: right;}
+.frame .base-info  .wap div {width: 230px;height: 115px;}
+.frame .base-info  .wap canvas {width: 100%;height: 100%;}
+
+/* 账户信息 */
+.account_box {
+    padding: 0 40px 20px 20px;
+}
+.account_info {
+    width: 100%;
+    text-align: left;
+}
+.account-info tr th {
+	width:33%;
+    font-weight: normal;
+    font-size: 14px;
+    
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+	color:#808080;
+}
+.account-info tr th span {
+    margin-left: 15px;
+   color: #FF411B;
+}
+.account-info tr td {
+	width:33%;
+    padding-top: 10px;
+	color: #808080;
+}
+.account-info tr td span {
+    margin-left: 15px;
+	color: #333;
+}
+/* 会员信息 */
+.member-info h2 {
+    padding: 15px 0 15px 20px;
+}
+.member-info h2 span {
+    color: #808080;
+    margin-right: 15px;
+}
+.member-info h2 span.ma_l {
+    margin-left: 150px;
+}
+.recharge{
+	 padding: 0 6px;
+    background-color: #f2f1f1;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    margin-left: 20px;
+	    cursor: pointer;
+}
+.member_info_list {
+    padding-left: 20px;
+    overflow: hidden;
+    padding: 14px 0;
+    border-top: 1px solid #ccc;
+}
+.member_info_list .info_tt {
+    float: left;
+	margin-left:20px;
+}
+.quanyi ,.jilu{
+    padding-left: 100px;
+}
+.member_info_list table {
+    width: 100%;
+}
+.member_info_list table tr td {
+    width: 25%;
+    text-align: center;
+    line-height: 22px;
+    padding: 5px 0;
+    border: 1px solid #ccc;
+}
+
+/* 主体信息 */
+.main_info_box {
+    padding: 10px 0 10px 20px;
+}
+.main_info_box table {
+    width: 80%;
+}
+.main_info_box table tr td {
+    width: 40%;
+	padding: 7px 0;
+}
+.main_info_box table tr td span{
+	margin-right:15px;
+	vertical-align: top;
+	color:#808080;
+}
+.main_info_box table tr td  img{
+	width:120px;
+	height:120px;
+	vertical-align: top;
+}
+.last_info {
+    padding: 10px 0 10px 20px;
+    border-top: 1px solid #ccc;
+}
+.last_info p {
+    padding: 5px 0;
+	color: #808080;
+}
+.last_info p span {
+    color:#333;
+    margin-left: 15px;
+}
+.edit {
+    position: absolute;
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: url(../img/Satyr_on.png) -0px -25px;
+    cursor: pointer;
+    right: 5px;
+    top: 20px;
+}
+.reset_lay {
+	display:none;
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    width: 440px;
+    height: 200px;
+    margin-top: -120px;
+    margin-left: -220px;
+	padding: 20px 0;
+	border:1px solid #808080;
+}
+.reset_lay h2 {
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.reset_lay p {
+    padding-left: 40px;
+    font-size: 16px;
+    margin: 10px 0;
+}
+.reset_lay p span {
+    color: #808080;
+    width: 97px;
+    display: inline-block;
+}
+.blocked_lay {
+	display:none;
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    width: 400px;
+    height: 200px;
+    margin-top: -120px;
+    margin-left: -220px;
+	padding: 20px;
+	border:1px solid #808080;
+}
+.blocked_lay h2 {
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.blocked_lay p {
+    font-size: 16px;
+    margin: 10px 0;
+    line-height: 28px;
+}
+.blocked_lay p span {
+    color: #808080;
+    width: 97px;
+    display: inline-block;
+}
+.bt_box {
+    text-align: center;
+}
+.bt_box input {
+    width: 71px;
+    height: 38px;
+    font-size: 16px;
+    margin-top: 25px;
+	cursor:pointer;
+}
+.bt_box input.ok{
+	color:#fff;
+	background-color:#808080;
+	border:1px solid #808080;
+	    margin-right: 32px;
+}
+.bt_box input.cancle{
+	color:#808080;
+	background-color:#fff;
+	border:1px solid #808080;
+}
+input.password {
+    height: 30px;
+    width: 207px;
+}

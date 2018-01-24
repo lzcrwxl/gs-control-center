@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fbee.modules.mybatis.dao.OrdersMapper">
+  <resultMap id="BaseResultMap" type="com.fbee.modules.mybatis.model.Orders">
+    <id column="ORDER_NO" jdbcType="VARCHAR" property="orderNo" />
+    <result column="TENANT_ID" jdbcType="INTEGER" property="tenantId" />
+    <result column="MEMBER_ID" jdbcType="INTEGER" property="memberId" />
+    <result column="AMOUNT" jdbcType="DECIMAL" property="amount" />
+    <result column="ORDER_TIME" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="ORDER_STATUS" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="SERVICE_ITEM_CODE" jdbcType="VARCHAR" property="serviceItemCode" />
+    <result column="STAFF_ID" jdbcType="INTEGER" property="staffId" />
+    <result column="ORDER_SOURCE" jdbcType="VARCHAR" property="orderSource" />
+    <result column="ORDER_DEPOSIT" jdbcType="DECIMAL" property="orderDeposit" />
+    <result column="ORDER_BALANCE" jdbcType="DECIMAL" property="orderBalance" />
+    <result column="DEPOSIT_DATE" jdbcType="TIMESTAMP" property="depositDate" />
+    <result column="IDEPOSIT_OVER" jdbcType="VARCHAR" property="idepositOver" />
+    <result column="IS_INTERVIEW" jdbcType="VARCHAR" property="isInterview" />
+    <result column="PASS_VIEW_DATE" jdbcType="TIMESTAMP" property="passViewDate" />
+    <result column="BALANCE_DATE" jdbcType="TIMESTAMP" property="balanceDate" />
+    <result column="IS_LOCK" jdbcType="VARCHAR" property="isLock" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="add_account" jdbcType="VARCHAR" property="addAccount" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modify_account" jdbcType="VARCHAR" property="modifyAccount" />
+    <result column="RESERVE_ORDER_NO" jdbcType="VARCHAR" property="reserveOrderNo" />
+    <result column="ORDER_TYPE" jdbcType="VARCHAR" property="orderType" />
+    <result column="MEMBER_MOBILE" jdbcType="VARCHAR" property="memberMobile" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="BALANCE_OVER" jdbcType="VARCHAR" property="balanceOver" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ORDER_NO, TENANT_ID, MEMBER_ID, AMOUNT, ORDER_TIME, ORDER_STATUS, SERVICE_ITEM_CODE, 
+    STAFF_ID, ORDER_SOURCE, ORDER_DEPOSIT, ORDER_BALANCE, DEPOSIT_DATE, IDEPOSIT_OVER, 
+    IS_INTERVIEW, PASS_VIEW_DATE, BALANCE_DATE, IS_LOCK, add_time, add_account, modify_time, 
+    modify_account, RESERVE_ORDER_NO, ORDER_TYPE, MEMBER_MOBILE, REMARK, BALANCE_OVER
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from orders
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fbee.modules.mybatis.model.Orders">
+    insert into orders (ORDER_NO, TENANT_ID, MEMBER_ID, 
+      AMOUNT, ORDER_TIME, ORDER_STATUS, 
+      SERVICE_ITEM_CODE, STAFF_ID, ORDER_SOURCE, 
+      ORDER_DEPOSIT, ORDER_BALANCE, DEPOSIT_DATE, 
+      IDEPOSIT_OVER, IS_INTERVIEW, PASS_VIEW_DATE, 
+      BALANCE_DATE, IS_LOCK, add_time, 
+      add_account, modify_time, modify_account, 
+      RESERVE_ORDER_NO, ORDER_TYPE, MEMBER_MOBILE, 
+      REMARK, BALANCE_OVER)
+    values (#{orderNo,jdbcType=VARCHAR}, #{tenantId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, 
+      #{amount,jdbcType=DECIMAL}, #{orderTime,jdbcType=TIMESTAMP}, #{orderStatus,jdbcType=VARCHAR}, 
+      #{serviceItemCode,jdbcType=VARCHAR}, #{staffId,jdbcType=INTEGER}, #{orderSource,jdbcType=VARCHAR}, 
+      #{orderDeposit,jdbcType=DECIMAL}, #{orderBalance,jdbcType=DECIMAL}, #{depositDate,jdbcType=TIMESTAMP}, 
+      #{idepositOver,jdbcType=VARCHAR}, #{isInterview,jdbcType=VARCHAR}, #{passViewDate,jdbcType=TIMESTAMP}, 
+      #{balanceDate,jdbcType=TIMESTAMP}, #{isLock,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{addAccount,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{modifyAccount,jdbcType=VARCHAR}, 
+      #{reserveOrderNo,jdbcType=VARCHAR}, #{orderType,jdbcType=VARCHAR}, #{memberMobile,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{balanceOver,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fbee.modules.mybatis.model.Orders">
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderNo != null">
+        ORDER_NO,
+      </if>
+      <if test="tenantId != null">
+        TENANT_ID,
+      </if>
+      <if test="memberId != null">
+        MEMBER_ID,
+      </if>
+      <if test="amount != null">
+        AMOUNT,
+      </if>
+      <if test="orderTime != null">
+        ORDER_TIME,
+      </if>
+      <if test="orderStatus != null">
+        ORDER_STATUS,
+      </if>
+      <if test="serviceItemCode != null">
+        SERVICE_ITEM_CODE,
+      </if>
+      <if test="staffId != null">
+        STAFF_ID,
+      </if>
+      <if test="orderSource != null">
+        ORDER_SOURCE,
+      </if>
+      <if test="orderDeposit != null">
+        ORDER_DEPOSIT,
+      </if>
+      <if test="orderBalance != null">
+        ORDER_BALANCE,
+      </if>
+      <if test="depositDate != null">
+        DEPOSIT_DATE,
+      </if>
+      <if test="idepositOver != null">
+        IDEPOSIT_OVER,
+      </if>
+      <if test="isInterview != null">
+        IS_INTERVIEW,
+      </if>
+      <if test="passViewDate != null">
+        PASS_VIEW_DATE,
+      </if>
+      <if test="balanceDate != null">
+        BALANCE_DATE,
+      </if>
+      <if test="isLock != null">
+        IS_LOCK,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="addAccount != null">
+        add_account,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="modifyAccount != null">
+        modify_account,
+      </if>
+      <if test="reserveOrderNo != null">
+        RESERVE_ORDER_NO,
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE,
+      </if>
+      <if test="memberMobile != null">
+        MEMBER_MOBILE,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="balanceOver != null">
+        BALANCE_OVER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceItemCode != null">
+        #{serviceItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staffId != null">
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="orderSource != null">
+        #{orderSource,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDeposit != null">
+        #{orderDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="orderBalance != null">
+        #{orderBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="depositDate != null">
+        #{depositDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idepositOver != null">
+        #{idepositOver,jdbcType=VARCHAR},
+      </if>
+      <if test="isInterview != null">
+        #{isInterview,jdbcType=VARCHAR},
+      </if>
+      <if test="passViewDate != null">
+        #{passViewDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="balanceDate != null">
+        #{balanceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isLock != null">
+        #{isLock,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addAccount != null">
+        #{addAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAccount != null">
+        #{modifyAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="reserveOrderNo != null">
+        #{reserveOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="memberMobile != null">
+        #{memberMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="balanceOver != null">
+        #{balanceOver,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fbee.modules.mybatis.model.Orders">
+    update orders
+    <set>
+      <if test="tenantId != null">
+        TENANT_ID = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null">
+        MEMBER_ID = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderTime != null">
+        ORDER_TIME = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null">
+        ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceItemCode != null">
+        SERVICE_ITEM_CODE = #{serviceItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staffId != null">
+        STAFF_ID = #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="orderSource != null">
+        ORDER_SOURCE = #{orderSource,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDeposit != null">
+        ORDER_DEPOSIT = #{orderDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="orderBalance != null">
+        ORDER_BALANCE = #{orderBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="depositDate != null">
+        DEPOSIT_DATE = #{depositDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idepositOver != null">
+        IDEPOSIT_OVER = #{idepositOver,jdbcType=VARCHAR},
+      </if>
+      <if test="isInterview != null">
+        IS_INTERVIEW = #{isInterview,jdbcType=VARCHAR},
+      </if>
+      <if test="passViewDate != null">
+        PASS_VIEW_DATE = #{passViewDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="balanceDate != null">
+        BALANCE_DATE = #{balanceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isLock != null">
+        IS_LOCK = #{isLock,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addAccount != null">
+        add_account = #{addAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAccount != null">
+        modify_account = #{modifyAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="reserveOrderNo != null">
+        RESERVE_ORDER_NO = #{reserveOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="memberMobile != null">
+        MEMBER_MOBILE = #{memberMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="balanceOver != null">
+        BALANCE_OVER = #{balanceOver,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fbee.modules.mybatis.model.Orders">
+    update orders
+    set TENANT_ID = #{tenantId,jdbcType=INTEGER},
+      MEMBER_ID = #{memberId,jdbcType=INTEGER},
+      AMOUNT = #{amount,jdbcType=DECIMAL},
+      ORDER_TIME = #{orderTime,jdbcType=TIMESTAMP},
+      ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
+      SERVICE_ITEM_CODE = #{serviceItemCode,jdbcType=VARCHAR},
+      STAFF_ID = #{staffId,jdbcType=INTEGER},
+      ORDER_SOURCE = #{orderSource,jdbcType=VARCHAR},
+      ORDER_DEPOSIT = #{orderDeposit,jdbcType=DECIMAL},
+      ORDER_BALANCE = #{orderBalance,jdbcType=DECIMAL},
+      DEPOSIT_DATE = #{depositDate,jdbcType=TIMESTAMP},
+      IDEPOSIT_OVER = #{idepositOver,jdbcType=VARCHAR},
+      IS_INTERVIEW = #{isInterview,jdbcType=VARCHAR},
+      PASS_VIEW_DATE = #{passViewDate,jdbcType=TIMESTAMP},
+      BALANCE_DATE = #{balanceDate,jdbcType=TIMESTAMP},
+      IS_LOCK = #{isLock,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      add_account = #{addAccount,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      modify_account = #{modifyAccount,jdbcType=VARCHAR},
+      RESERVE_ORDER_NO = #{reserveOrderNo,jdbcType=VARCHAR},
+      ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      MEMBER_MOBILE = #{memberMobile,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      BALANCE_OVER = #{balanceOver,jdbcType=VARCHAR}
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+  </update>
+  <!-- 总控平台开始  -->
+  <!-- 获取订单列表总数 -->
+  <select id = "getzkCount" parameterType="com.fbee.modules.mybatis.entity.OrdersEntity" resultType="java.lang.Integer">
+	  SELECT 
+	    					count(0)
+	 FROM
+							orders a
+													
+				LEFT JOIN 	order_customers_info b 
+							on  a.ORDER_NO = b.ORDER_NO
+				LEFT JOIN 	tenants_staffs_info c
+							on 	a.STAFF_ID=c.STAFF_ID
+							and a.TENANT_ID=c.TENANT_ID
+							and a.STAFF_ID=c.STAFF_ID
+				LEFT JOIN 	tenants_staff_ser_items d 
+					        on a.STAFFF_SER_ITEM_ID = d.id
+				LEFT JOIN 	tenants_apps s
+					        on a.TENANT_ID=s.TENANT_ID
+			where 1=1	
+	  <if test="orderNo != '' and orderNo != null">
+	       and a.ORDER_NO LIKE concat(concat('%',#{orderNo}),'%')
+	       or   a.SHARE_ORDER_NO LIKE concat(concat('%',#{orderNo}),'%')
+	  </if>
+	  <if test="memberName != '' and memberName != null">
+	    AND b.MEMBER_NAME LIKE concat(concat('%',#{memberName}),'%') 
+	  </if>
+	  <if test="memberMobile != '' and memberMobile != null">
+	    AND b.MEMBER_MOBILE LIKE concat(concat('%',#{memberMobile}),'%')
+	  </if>
+	  <if test="orderStatus != '' and orderStatus != null">
+	    AND a.ORDER_STATUS = #{orderStatus}
+	  </if>
+	  <if test="serviceItemCode != '' and serviceItemCode != null">
+	    AND a.SERVICE_ITEM_CODE = #{serviceItemCode}
+	  </if>
+	  <if test="orderSource != '' and orderSource != null">
+	    AND a.ORDER_SOURCE = #{orderSource}
+	  </if>
+	  <if test="startTime != '' and startTime != null">
+	    AND DATE_FORMAT(a.ORDER_TIME,'%Y-%m-%d') <![CDATA[>=]]> #{startTime}
+	  </if>
+	  <if test="endTime != '' and endTime != null">
+	    AND DATE_FORMAT(a.ORDER_TIME,'%Y-%m-%d') <![CDATA[<=]]> #{endTime}
+	  </if>
+	</select>
+	<!-- 订单列表查询 -->
+   <select id = "queryOrdersList" parameterType="com.fbee.modules.mybatis.entity.OrdersEntity" resultType="java.util.Map">
+			  SELECT
+					DATE_FORMAT(a.ORDER_TIME , '%Y-%m-%d %H:%i:%s') "orderTime",
+					a.ORDER_NO "orderNo",
+					FUNC_GET_CODE_NAME (
+					'SERVICE_TYPES',
+					a.SERVICE_ITEM_CODE,
+					'1'
+					) 'serviceItemCode',
+					b.MEMBER_MOBILE 'memberMobile',
+					b.MEMBER_NAME 'memberName',
+					FUNC_GET_CODE_NAME (
+					'MEMBER_SEX',
+					b.MEMBER_SEX,
+					'1'
+					) 'memberSex',
+					b.SERVICE_PROVICE 'serviceProvice',
+					b.SERVICE_CITY "serviceCity",
+					b.SERVICE_COUNTY "serviceCounty",
+					c.STAFF_NAME 'staffName',
+					DATE_FORMAT(b.SERVICE_START, '%Y-%m-%d' ) 'serviceStart',
+					DATE_FORMAT(b.SERVICE_END, '%Y-%m-%d')  'serviceEnd',
+					a.AMOUNT 'price',
+					a.SERVICE_CHARGE 'serviceCharge',
+					s.WEBSITE_NAME 'tenantName',
+					FUNC_GET_CODE_NAME (
+					'ORDER_STATUS',
+					a.ORDER_STATUS ,
+					'1'
+					) "orderStatus",
+					IFNULL(a.SHARE_ORDER_NO,"--") "shareOrderNo"
+				FROM
+							orders a
+													
+				LEFT JOIN 	order_customers_info b 
+							on  a.ORDER_NO = b.ORDER_NO
+				LEFT JOIN 	tenants_staffs_info c
+							on 	a.STAFF_ID=c.STAFF_ID
+							and a.TENANT_ID=c.TENANT_ID
+							and a.STAFF_ID=c.STAFF_ID
+				LEFT JOIN 	tenants_staff_ser_items d 
+					       on a.STAFFF_SER_ITEM_ID = d.id
+				LEFT JOIN 	tenants_apps s
+					        on a.TENANT_ID=s.TENANT_ID
+				where    1=1
+				  <if test="orderNo != '' and orderNo != null">
+				     and  a.ORDER_NO LIKE concat(concat('%',#{orderNo}),'%')
+				     or   a.SHARE_ORDER_NO LIKE concat(concat('%',#{orderNo}),'%')
+				  </if>
+				  <if test="memberName != '' and memberName != null">
+				    AND b.MEMBER_NAME LIKE concat(concat('%',#{memberName}),'%')
+				  </if>
+				  <if test="memberMobile != '' and memberMobile != null">
+				    AND b.MEMBER_MOBILE LIKE concat(concat('%',#{memberMobile}),'%')
+				  </if>
+				  <if test="orderStatus != '' and orderStatus != null">
+				    AND a.ORDER_STATUS = #{orderStatus}
+				  </if>
+				  <if test="serviceItemCode != '' and serviceItemCode != null">
+				    AND a.SERVICE_ITEM_CODE = #{serviceItemCode}
+				  </if>
+				  <if test="orderSource != '' and orderSource != null">
+				    AND a.ORDER_SOURCE = #{orderSource}
+				  </if>
+				  <if test="startTime != '' and startTime != null">
+				    AND DATE_FORMAT(a.ORDER_TIME,'%Y-%m-%d') <![CDATA[>=]]>  #{startTime}
+				  </if>
+				  <if test="endTime != '' and endTime != null">
+				    AND DATE_FORMAT(a.ORDER_TIME,'%Y-%m-%d') <![CDATA[<=]]> #{endTime}
+				  </if>
+				  ORDER BY   a.ORDER_TIME DESC
+				  LIMIT #{pageNum},#{pageSize}
+				</select>
+  <!-- 总控平台结束 -->
+  <select id = "selectOrdersList" parameterType="com.fbee.modules.mybatis.entity.OrdersEntity" resultType="java.util.Map">
+			  SELECT
+			a.ORDER_NO 'orderNo',
+			a.ORDER_TIME 'orderTime',
+			FUNC_GET_CODE_NAME ('SERVICE_TYPE',b.SERVICE_TYPE) 'serviceType',
+			FUNC_GET_CODE_NAME ('ORDER_SOURCE',a.ORDER_SOURCE) 'orderSource',
+			FUNC_GET_CODE_NAME ('ORDER_STATUS',a.ORDER_STATUS) 'orderStatus',
+			FUNC_GET_CODE_NAME ('SERVICE_TYPES',a.SERVICE_ITEM_CODE) 'serviceItemCode',
+			b.MEMBER_NAME 'memberName',
+			b.MEMBER_MOBILE 'memberMobile',
+			b.SERVICE_PROVICE 'serviceProvice',
+			b.SERVICE_CITY 'serviceCity',
+			b.SERVICE_COUNTY 'serviceCounty',
+			b.REMARKS 'remarks',
+			c.STAFF_NAME 'staffName',
+			c.AGE 'age',
+			FUNC_GET_CODE_NAME ('ZODIAC', c.ZODIAC) 'zodiac',
+			FUNC_GET_CODE_NAME ('NATIVE_PLACE',c.NATIVE_PLACE) 'nativePlace',
+			c.HEAD_IMAGE 'headImage',
+			d. STATUS 'status'
+		FROM
+			orders a,
+			order_customers_info b,
+			tenants_staffs_info c,
+			order_share_info d
+		WHERE
+			b.ORDER_NO = a.ORDER_NO
+		AND a.STAFF_ID = c.STAFF_ID
+		AND a.ORDER_NO = d.ORDER_NO
+	  <if test="orderNo != '' and orderNo != null">
+	    AND a.ORDER_NO = #{orderNo}
+	  </if>
+	  <if test="memberName != '' and memberName != null">
+	    AND b.MEMBER_NAME = #{memberName}
+	  </if>
+	  <if test="memberMobile != '' and memberMobile != null">
+	    AND b.MEMBER_MOBILE = #{memberMobile}
+	  </if>
+	  <if test="orderStatus != '' and orderStatus != null">
+	    AND a.ORDER_STATUS = #{orderStatus}
+	  </if>
+	  <if test="serviceItemCode != '' and serviceItemCode != null">
+	    AND a.SERVICE_ITEM_CODE = #{serviceItemCode}
+	  </if>
+	  <if test="orderSource != '' and orderSource != null">
+	    AND a.ORDER_SOURCE = #{orderSource}
+	  </if>
+	  <if test="startTime != '' and startTime != null">
+	    AND a.ORDER_TIME >= #{startTime}
+	  </if>
+	  <if test="endTime != '' and endTime != null">
+	    AND a.ORDER_TIME <![CDATA[<]]> #{endTime}
+	  </if>
+	  LIMIT #{pageNum},#{pageSize}
+	</select>
+	
+	<select id = "getCount" parameterType="com.fbee.modules.mybatis.entity.OrdersEntity" resultType="java.lang.Integer">
+	  SELECT 
+	    count(0)
+	  FROM
+			orders a,
+			order_customers_info b,
+			tenants_staffs_info c,
+	    order_share_info d
+	  WHERE
+	    b.ORDER_NO = a.ORDER_NO
+	  AND a.STAFF_ID = c.STAFF_ID
+	  AND a.ORDER_NO = d.ORDER_NO
+	  AND a.TENANT_ID = #{tenantId}
+	  <if test="orderNo != '' and orderNo != null">
+	    AND a.ORDER_NO = #{orderNo}
+	  </if>
+	  <if test="memberName != '' and memberName != null">
+	    AND b.MEMBER_NAME = #{memberName}
+	  </if>
+	  <if test="memberMobile != '' and memberMobile != null">
+	    AND b.MEMBER_MOBILE = #{memberMobile}
+	  </if>
+	  <if test="orderStatus != '' and orderStatus != null">
+	    AND a.ORDER_STATUS = #{orderStatus}
+	  </if>
+	  <if test="serviceItemCode != '' and serviceItemCode != null">
+	    AND a.SERVICE_ITEM_CODE = #{serviceItemCode}
+	  </if>
+	  <if test="orderSource != '' and orderSource != null">
+	    AND a.ORDER_SOURCE = #{orderSource}
+	  </if>
+	  <if test="startTime != '' and startTime != null">
+	    AND a.ORDER_TIME >= #{startTime}
+	  </if>
+	  <if test="endTime != '' and endTime != null">
+	    AND a.ORDER_TIME <![CDATA[<]]> #{endTime}
+	  </if>
+	  <if test="tenantId != '' and tenantId != null">
+	    AND a.TENANT_ID = #{tenantId}
+	  </if>
+	</select>
+
+	
+	<select id="selectByOrderNo" parameterType="java.lang.String" resultType="java.util.Map">
+	    select
+	      a.ORDER_NO 'orderNo',
+	      a.ORDER_TIME 'orderTime',
+	      FUNC_GET_CODE_NAME (
+					'SERVICE_TYPES',
+					a.SERVICE_ITEM_CODE
+				) 'serviceItemCode',
+		  FUNC_GET_CODE_NAME (
+					'SERVICE_TYPE',
+					b.SERVICE_TYPE
+				) 'serviceType',
+		  FUNC_GET_CODE_NAME (
+					'ORDER_SOURCE',
+					a.ORDER_SOURCE
+				) 'orderSource',
+		  a.AMOUNT 'amount'
+	    from 
+	      orders a,
+		  order_customers_info b
+	    where a.ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+  </select>
+  
+	<!--根据订单流水号获取支付信息  -->
+   <select id="selectPayInfoByOrderNo" parameterType="java.lang.String" resultType="java.util.Map">
+       SELECT 
+		   ORDER_NO 'orderNo',
+		   ORDER_DEPOSIT 'orderDeposit',
+		   DEPOSIT_DATE 'depositDate',
+		   IDEPOSIT_OVER 'idepositOver',
+		   IS_INTERVIEW 'isInterview',
+		   PASS_VIEW_DATE 'passViewDate',
+		   ORDER_BALANCE 'orderBalance',
+		   BALANCE_DATE 'balanceDate',
+		   BALANCE_OVER 'balanceOver'
+		FROM
+		   orders
+		WHERE
+		   ORDER_NO = #{orderNo}
+   </select>	
+   <select id="getStaffOrders" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from orders
+		where STAFF_ID = #{staffId,jdbcType=INTEGER}
+		order by ORDER_TIME desc
+		limit 5
+  </select>
+</mapper>

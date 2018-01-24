@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fbee.modules.mybatis.dao.TenantsStaffCertsInfoMapper">
+	<resultMap id="BaseResultMap"
+		type="com.fbee.modules.mybatis.entity.TenantsStaffCertsInfoEntity">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="STAFF_ID" jdbcType="INTEGER" property="staffId" />
+		<result column="TENANT_ID" jdbcType="INTEGER" property="tenantId" />
+		<result column="LEVEL" jdbcType="VARCHAR" property="level" />
+		<result column="CERT_TYPE" jdbcType="VARCHAR" property="certType" />
+		<result column="CERT_NO" jdbcType="VARCHAR" property="certNo" />
+		<result column="CERTIFICATION_BODY" jdbcType="VARCHAR"
+			property="certificationBody" />
+		<result column="CERT_IMAGE" jdbcType="VARCHAR" property="certImage" />
+		<result column="CERTIFICATION_DATE" jdbcType="TIMESTAMP"
+			property="certificationDate" />
+		<result column="PROVINCE" jdbcType="VARCHAR" property="province" />
+		<result column="CERT_EXPIRE_DATE" jdbcType="DATE" property="certExpireDate" />
+		<result column="CERTIFIED_STATUS" jdbcType="VARCHAR" property="certifiedStatus" />
+		<result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+		<result column="add_account" jdbcType="VARCHAR" property="addAccount" />
+		<result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+		<result column="modify_account" jdbcType="VARCHAR" property="modifyAccount" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, STAFF_ID, TENANT_ID, LEVEL, CERT_TYPE, CERT_NO, CERTIFICATION_BODY,
+		CERT_IMAGE,
+		CERTIFICATION_DATE, PROVINCE, CERT_EXPIRE_DATE, CERTIFIED_STATUS, add_time, add_account,
+		modify_time, modify_account
+	</sql>
+
+	<insert id="insert"
+		parameterType="com.fbee.modules.mybatis.entity.TenantsStaffCertsInfoEntity">
+		insert into tenants_staff_certs_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="staffId != null">
+				STAFF_ID,
+			</if>
+			<if test="tenantId != null">
+				TENANT_ID,
+			</if>
+			<if test="level != null">
+				LEVEL,
+			</if>
+			<if test="certType != null">
+				CERT_TYPE,
+			</if>
+			<if test="certNo != null">
+				CERT_NO,
+			</if>
+			<if test="certificationBody != null">
+				CERTIFICATION_BODY,
+			</if>
+			<if test="certImage != null">
+				CERT_IMAGE,
+			</if>
+			<if test="certificationDate != null">
+				CERTIFICATION_DATE,
+			</if>
+			<if test="province != null">
+				PROVINCE,
+			</if>
+			<if test="certExpireDate != null">
+				CERT_EXPIRE_DATE,
+			</if>
+			<if test="certifiedStatus != null">
+				CERTIFIED_STATUS,
+			</if>
+			<if test="addTime != null">
+				add_time,
+			</if>
+			<if test="addAccount != null">
+				add_account,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="modifyAccount != null">
+				modify_account,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="staffId != null">
+				#{staffId,jdbcType=INTEGER},
+			</if>
+			<if test="tenantId != null">
+				#{tenantId,jdbcType=INTEGER},
+			</if>
+			<if test="level != null">
+				#{level,jdbcType=VARCHAR},
+			</if>
+			<if test="certType != null">
+				#{certType,jdbcType=VARCHAR},
+			</if>
+			<if test="certNo != null">
+				#{certNo,jdbcType=VARCHAR},
+			</if>
+			<if test="certificationBody != null">
+				#{certificationBody,jdbcType=VARCHAR},
+			</if>
+			<if test="certImage != null">
+				#{certImage,jdbcType=VARCHAR},
+			</if>
+			<if test="certificationDate != null">
+				#{certificationDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="province != null">
+				#{province,jdbcType=VARCHAR},
+			</if>
+			<if test="certExpireDate != null">
+				#{certExpireDate,jdbcType=DATE},
+			</if>
+			<if test="certifiedStatus != null">
+				#{certifiedStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null">
+				#{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="addAccount != null">
+				#{addAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyAccount != null">
+				#{modifyAccount,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="update"
+		parameterType="com.fbee.modules.mybatis.entity.TenantsStaffCertsInfoEntity">
+		update tenants_staff_certs_info
+		<set>
+			<if test="staffId != null">
+				STAFF_ID = #{staffId,jdbcType=INTEGER},
+			</if>
+			<if test="tenantId != null">
+				TENANT_ID = #{tenantId,jdbcType=INTEGER},
+			</if>
+			<if test="level != null">
+				LEVEL = #{level,jdbcType=VARCHAR},
+			</if>
+			<if test="certType != null">
+				CERT_TYPE = #{certType,jdbcType=VARCHAR},
+			</if>
+			<if test="certNo != null">
+				CERT_NO = #{certNo,jdbcType=VARCHAR},
+			</if>
+			<if test="certificationBody != null">
+				CERTIFICATION_BODY = #{certificationBody,jdbcType=VARCHAR},
+			</if>
+			<if test="certImage != null">
+				CERT_IMAGE = #{certImage,jdbcType=VARCHAR},
+			</if>
+			<if test="certificationDate != null">
+				CERTIFICATION_DATE = #{certificationDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="province != null">
+				PROVINCE = #{province,jdbcType=VARCHAR},
+			</if>
+			<if test="certExpireDate != null">
+				CERT_EXPIRE_DATE = #{certExpireDate,jdbcType=DATE},
+			</if>
+			<if test="certifiedStatus != null">
+				CERTIFIED_STATUS = #{certifiedStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null">
+				add_time = #{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="addAccount != null">
+				add_account = #{addAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyAccount != null">
+				modify_account = #{modifyAccount,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="getSatffAllCerts" parameterType="java.lang.Integer" resultMap="BaseResultMap"> 
+		select
+		<include refid="Base_Column_List" />
+		from tenants_staff_certs_info
+		where STAFF_ID = #{staffId,jdbcType=INTEGER}
+	</select>
+	
+	
+	
+	<sql id="QueryStaffCertList">
+		<if test="certifiedStatus !=null and certifiedStatus !=''">
+			AND a.CERTIFIED_STATUS=#{certifiedStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="addTimeLeft != null and addTimeLeft !=''">
+			and DATE_FORMAT(a.ADD_TIME,'%Y-%m-%d') <![CDATA[>=]]> #{addTimeLeft,jdbcType=TIMESTAMP}
+		</if>
+		<if test="addTimeRight !=null and addTimeRight !=''">
+			and DATE_FORMAT(a.ADD_TIME,'%Y-%m-%d') <![CDATA[<=]]> #{addTimeRight,jdbcType=TIMESTAMP}
+		</if>
+		<if test="certType !=null and certType !=''">
+			and a.CERT_TYPE=#{certType,jdbcType=VARCHAR}
+		</if>
+		<if test="certNo !=null and  certNo !=''">
+			and  a.CERT_NO=#{certNo,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<!-- 总控平台-证书管理-总数查询 -->
+	<select id="getstaffCertCount" parameterType="com.fbee.modules.mybatis.entity.TenantsStaffCertsInfoEntity"
+		resultType="java.lang.Integer">
+		select 
+				count(0)
+		from
+				tenants_staff_certs_info a,
+				tenants_staffs_info b
+		WHERE
+			1=1
+			and a.is_usable='01'
+			and a.STAFF_ID= b.STAFF_ID
+			and a.TENANT_ID = b.TENANT_ID
+		<include refid="QueryStaffCertList" />
+	</select>
+	<!-- 总控平台-查询所有证书 -->
+	<select id="getstaffCertList"
+		parameterType="com.fbee.modules.mybatis.entity.TenantsStaffCertsInfoEntity"
+		resultType="java.util.Map">
+		SELECT
+				a.ID 'id',
+				a.STAFF_ID 'staffId',
+				a.add_time 'addTime',
+				a.TENANT_ID 'tenantID',
+				a.LEVEL 'level',
+				a.CERT_TYPE "certType",
+				a.CERTIFICATION_BODY 'certificationBody',
+				a.CERT_NO 'certNo',
+				a.CERTIFICATION_DATE 'certificationDate',
+				a.CERT_EXPIRE_DATE 'certExpireDate',
+				a.other_certificationBody 'otherCertificationBody',
+				a.authenticate_grade 'authenticateGrade',
+				b.STAFF_NAME "staffName"
+		FROM
+				tenants_staff_certs_info a ,
+				tenants_staffs_info b
+		WHERE
+			1=1
+			and a.is_usable='01'
+			and a.STAFF_ID= b.STAFF_ID
+			and a.TENANT_ID = b.TENANT_ID
+			<include refid="QueryStaffCertList" />
+			ORDER BY     a.add_time DESC
+		limit #{pageNumber,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+	<!-- 总控平台-证书详细信息 -->
+	<select id="selectCertInfoById" parameterType="java.lang.Integer" resultType="java.util.Map">
+     SELECT 
+    	a.ID, a.STAFF_ID, a.TENANT_ID,
+    	a.LEVEL "level", 
+    	a.CERT_TYPE "CertType",
+    	a.CERT_NO "certNo", 
+    	a.CERTIFICATION_BODY "certificationBody",
+		a.CERT_IMAGE "certImage",
+		DATE_FORMAT(a.CERTIFICATION_DATE,'%Y-%m-%d' ) "certificationDate",PROVINCE, 
+		DATE_FORMAT(a.CERT_EXPIRE_DATE,'%Y-%m-%d' ) "certExpireDate",
+		FUNC_GET_CODE_NAME("CERTIFIED_STATUS",a.CERTIFIED_STATUS,"1") "certifiedStatus",
+		DATE_FORMAT(a.add_time, '%Y-%m-%d %H:%i:%s') "addTime",
+		a.add_account,
+		a.modify_time, 
+	    a.modify_account,
+		a.other_certificationBody 'otherCertificationBody',
+		a.authenticate_grade 'authenticateGrade',
+		b.STAFF_NAME "staffName",
+		b.CERT_NO "cardNo"
+    FROM 
+   		tenants_staff_certs_info a ,
+		tenants_staffs_info b
+    WHERE a.ID = #{id,jdbcType=INTEGER}
+    	and a.STAFF_ID= b.STAFF_ID
+		and a.TENANT_ID = b.TENANT_ID
+  </select>
+  
+  	<!-- 总控平台 证书查询审核-->
+	<select id="checkCertById" parameterType="java.lang.Integer" resultType="java.util.Map">
+     SELECT
+	 	a.STAFF_ID "staffId",
+		a.TENANT_ID "tenantId",
+		a.LEVEL "level",
+		a.CERT_TYPE "certType",
+		a.CERT_NO "certNo",
+		b.CERT_NO "idcard"
+     FROM
+		tenants_staff_certs_info a,
+		tenants_staffs_info b
+	 WHERE 	
+			a.ID=#{id,jdbcType=INTEGER}
+		and a.STAFF_ID=b.STAFF_ID
+		and a.TENANT_ID=b.TENANT_ID
+  </select>
+  
+</mapper>

@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+.naviLeft {width: 188px;background-color: #EBEFF8;position: absolute;}
+.naviLeft ul {margin-top: 30px;}
+.naviLeft ul li {height: 44px;line-height: 44px;vertical-align: top;cursor: pointer;margin-bottom: 5px;}
+.naviLeft ul .nl_on {background-color: #FFF;}
+.naviLeft ul .nl_on>a {color: #0A7EE3!important;}
+.naviLeft ul .nl_on>a em {background-image: url(../image/Satyr_on.png)!important;}
+.naviLeft ul li a {display: block;width: 128px;padding: 0 40px;text-align: right; font-size: 16px;position: relative;}
+.naviLeft ul li a:visited {color: #333333;}
+.naviLeft ul li a em {background-image: url(../image/Satyr.png);position: absolute;top: 12px;left: 40px;}
+.naviLeft ul li .ddgl em {display:inline-block;background-position: -100px 0px; width: 20px; height: 20px;}
+.naviLeft ul li .yygl em {display:inline-block;background-position: -120px 0px; width: 20px; height: 20px;}
+.naviLeft ul li:hover a em {background-image: url(../image/Satyr_on.png)!important;}
+.naviLeft ul li:hover {background-color: #FFF;}
+.naviLeft ul li:hover>a {color: #0A7EE3;}
+.naviLeft ul .beeshare-btn div {display: none;}
+.naviLeft ul .beeshare-btn div a {display: block;height: 36px;line-height: 36px;background-color: #FFFFFF;margin-top: 1px;}
+.naviLeft ul .beeshare-btn div a:hover {color: #0A7EE3;}
+
+
+.frame .financialQuery p {float: left;margin-top: 20px;}
+.frame .financialQuery p a {display: inline-block;width: 64px;height: 28px;line-height: 28px;text-align: center;color: #FFFFFF;background-color: #fd7c3e;cursor: pointer;vertical-align: middle;}
+.frame .financialQuery p span {margin-right: 40px;}
+.frame .financialQuery p span select {width: 175px;height: 24px;border: 1px solid #CCCCCC;}
+.frame .financialFlow {width: 100%;text-align: center;margin-top: 18px;}
+.frame .financialFlow thead {background-color: #EBEFF8;}
+.frame .financialFlow tr {height: 44px;}
+
+
+.particulars {margin-left: 188px;}
+.particulars .frame {min-width: 950px!important;}
+
+.addfix {float: right;margin-top: -1.5%;}
+.addfix a:hover{color: #fd7c3e;}

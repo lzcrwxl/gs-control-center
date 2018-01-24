@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fbee.modules.mybatis.dao.TenantsAboutUsMapper">
+  <resultMap id="BaseResultMap" type="com.fbee.modules.mybatis.model.TenantsAboutUs">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="TENANT_ID" jdbcType="INTEGER" property="tenantId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="images" jdbcType="VARCHAR" property="images" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="add_account" jdbcType="VARCHAR" property="addAccount" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modify_account" jdbcType="VARCHAR" property="modifyAccount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, TENANT_ID, content, images, add_time, add_account, modify_time, modify_account
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tenants_about_us
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="getByTenantId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tenants_about_us
+    where TENANT_ID = #{value}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tenants_about_us
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fbee.modules.mybatis.model.TenantsAboutUs">
+    insert into tenants_about_us (id, TENANT_ID, content, 
+      images, add_time, add_account, is_default, is_usable,
+      modify_time, modify_account)
+    values (#{id,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      #{images,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{addAccount,jdbcType=VARCHAR}, 1, 1,
+      #{modifyTime,jdbcType=TIMESTAMP}, #{modifyAccount,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fbee.modules.mybatis.model.TenantsAboutUs">
+    insert into tenants_about_us
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tenantId != null">
+        TENANT_ID,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="images != null">
+        images,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="addAccount != null">
+        add_account,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="modifyAccount != null">
+        modify_account,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null">
+        #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addAccount != null">
+        #{addAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAccount != null">
+        #{modifyAccount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fbee.modules.mybatis.model.TenantsAboutUs">
+    update tenants_about_us
+    <set>
+      <if test="tenantId != null">
+        TENANT_ID = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null">
+        images = #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addAccount != null">
+        add_account = #{addAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAccount != null">
+        modify_account = #{modifyAccount,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fbee.modules.mybatis.model.TenantsAboutUs">
+    update tenants_about_us
+    set TENANT_ID = #{tenantId,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      images = #{images,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      add_account = #{addAccount,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      modify_account = #{modifyAccount,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 获取关于我们信息 -->
+	<select id="getAboutUsInfo" parameterType="java.lang.Integer" resultType="java.util.Map" >
+		SELECT
+			a.id "id",
+			a.content "content",
+			a.images "imageUrl"
+		FROM
+			TENANTS_ABOUT_US a
+		WHERE a.TENANT_ID = #{tenantId} 
+		LIMIT 0,5
+	</select>
+</mapper>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fbee.modules.mybatis.dao.TradeRecordsMapper">
+	<resultMap id="BaseResultMap"
+		type="com.fbee.modules.mybatis.entity.TradeRecordsEntity">
+		<id column="TRADE_FLOW_NO" jdbcType="VARCHAR" property="tradeFlowNo" />
+		<result column="TRADE_TYPE" jdbcType="VARCHAR" property="tradeType" />
+		<result column="TRADE_AMOUNT" jdbcType="DECIMAL" property="tradeAmount" />
+		<result column="COUNTER_FEE" jdbcType="DECIMAL" property="counterFee" />
+		<result column="TRADE_TIME" jdbcType="TIMESTAMP" property="tradeTime" />
+		<result column="TRADE_STATIS" jdbcType="VARCHAR" property="tradeStatis" />
+		<result column="INITIATOR_TYPE" jdbcType="VARCHAR" property="initatorType" />
+		<result column="FAILURE_MSG" jdbcType="VARCHAR" property="failureMsg" />
+		<result column="TRADE_RESULT_CODE" jdbcType="VARCHAR" property="tradeResultCode" />
+		<result column="is_usable" jdbcType="VARCHAR" property="isUsable" />
+		<result column="add_account" jdbcType="VARCHAR" property="addAccount" />
+		<result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+		<result column="modify_account" jdbcType="VARCHAR" property="modifyAccount" />
+		<result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+		<result column="REQUEST_RESULT" jdbcType="VARCHAR" property="requestResult" />
+		<result column="ORDER_NO" jdbcType="VARCHAR" property="orderNo" />
+		<result column="OUT_ORDER_NO" jdbcType="VARCHAR" property="outOrderNo" />
+		<result column="TRADE_CHANNEL" jdbcType="VARCHAR" property="tradeChannel" />
+		<result column="TRADE_CHANNEL_NO" jdbcType="VARCHAR" property="tradeChannelNo" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		TRADE_FLOW_NO, TRADE_TYPE, TRADE_AMOUNT, COUNTER_FEE, TRADE_TIME, TRADE_STATIS,INITIATOR_TYPE,
+		 FAILURE_MSG, TRADE_RESULT_CODE,is_usable,add_account,add_time,modify_account, MODIFY_TIME, REQUEST_RESULT,
+		ORDER_NO,
+		OUT_ORDER_NO,TRADE_CHANNEL,TRADE_CHANNEL_NO
+	</sql>
+
+	<insert id="insert" parameterType="com.fbee.modules.mybatis.entity.TradeRecordsEntity">
+		insert into trade_records
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="tradeFlowNo != null">
+				TRADE_FLOW_NO,
+			</if>
+			<if test="tradeType != null">
+				TRADE_TYPE,
+			</if>
+			<if test="tradeAmount != null">
+				TRADE_AMOUNT,
+			</if>
+			<if test="counterFee != null">
+				COUNTER_FEE,
+			</if>
+			<if test="tradeTime != null">
+				TRADE_TIME,
+			</if>
+			<if test="tradeStatis != null">
+				TRADE_STATIS,
+			</if>
+			<if test="payer != null">
+				PAYER,
+			</if>
+			<if test="payee != null">
+				PAYEE,
+			</if>
+			<if test="failureMsg != null">
+				FAILURE_MSG,
+			</if>
+			<if test="tradeResultCode != null">
+				TRADE_RESULT_CODE,
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME,
+			</if>
+			<if test="requestResult != null">
+				REQUEST_RESULT,
+			</if>
+			<if test="inOrderNo != null">
+				IN_ORDER_NO,
+			</if>
+			<if test="outOrderNo != null">
+				OUT_ORDER_NO,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="tradeFlowNo != null">
+				#{tradeFlowNo,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeType != null">
+				#{tradeType,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeAmount != null">
+				#{tradeAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="counterFee != null">
+				#{counterFee,jdbcType=DECIMAL},
+			</if>
+			<if test="tradeTime != null">
+				#{tradeTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="tradeStatis != null">
+				#{tradeStatis,jdbcType=VARCHAR},
+			</if>
+			<if test="payer != null">
+				#{payer,jdbcType=INTEGER},
+			</if>
+			<if test="payee != null">
+				#{payee,jdbcType=INTEGER},
+			</if>
+			<if test="failureMsg != null">
+				#{failureMsg,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeResultCode != null">
+				#{tradeResultCode,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="requestResult != null">
+				#{requestResult,jdbcType=VARCHAR},
+			</if>
+			<if test="inOrderNo != null">
+				#{inOrderNo,jdbcType=VARCHAR},
+			</if>
+			<if test="outOrderNo != null">
+				#{outOrderNo,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="com.fbee.modules.mybatis.entity.TradeRecordsEntity">
+		update trade_records
+		<set>
+			<if test="tradeType != null">
+				TRADE_TYPE = #{tradeType,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeAmount != null">
+				TRADE_AMOUNT = #{tradeAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="counterFee != null">
+				COUNTER_FEE = #{counterFee,jdbcType=DECIMAL},
+			</if>
+			<if test="tradeTime != null">
+				TRADE_TIME = #{tradeTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="tradeStatis != null">
+				TRADE_STATIS = #{tradeStatis,jdbcType=VARCHAR},
+			</if>
+			<if test="payer != null">
+				PAYER = #{payer,jdbcType=INTEGER},
+			</if>
+			<if test="payee != null">
+				PAYEE = #{payee,jdbcType=INTEGER},
+			</if>
+			<if test="failureMsg != null">
+				FAILURE_MSG = #{failureMsg,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeResultCode != null">
+				TRADE_RESULT_CODE = #{tradeResultCode,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="requestResult != null">
+				REQUEST_RESULT = #{requestResult,jdbcType=VARCHAR},
+			</if>
+			<if test="inOrderNo != null">
+				IN_ORDER_NO = #{inOrderNo,jdbcType=VARCHAR},
+			</if>
+			<if test="outOrderNo != null">
+				OUT_ORDER_NO = #{outOrderNo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where TRADE_FLOW_NO = #{tradeFlowNo,jdbcType=VARCHAR}
+	</update>
+	
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from trade_records
+    where TRADE_FLOW_NO = #{tradeFlowNo,jdbcType=VARCHAR}
+  </select>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="com.fbee.modules.mybatis.model.TradeRecords">
+		update trade_records
+		<set>
+			<if test="tradeType != null">
+				TRADE_TYPE = #{tradeType,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeAmount != null">
+				TRADE_AMOUNT = #{tradeAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="counterFee != null">
+				COUNTER_FEE = #{counterFee,jdbcType=DECIMAL},
+			</if>
+			<if test="tradeTime != null">
+				TRADE_TIME = #{tradeTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="tradeStatis != null">
+				TRADE_STATIS = #{tradeStatis,jdbcType=VARCHAR},
+			</if>
+			<if test="initatorType != null">
+				INITIATOR_TYPE = #{initatorType,jdbcType=VARCHAR},
+			</if>
+			<if test="failureMsg != null">
+				FAILURE_MSG = #{failureMsg,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeResultCode != null">
+				TRADE_RESULT_CODE = #{tradeResultCode,jdbcType=VARCHAR},
+			</if>
+			<if test="isUsable != null">
+				is_usable = #{isUsable,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyAccount != null">
+				modify_account = #{modifyAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="addTime != null">
+				add_time = #{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="addAccount != null">
+				add_account = #{addAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="requestResult != null">
+				REQUEST_RESULT = #{requestResult,jdbcType=VARCHAR},
+			</if>
+			<if test="orderNo != null">
+				ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+			</if>
+			<if test="outOrderNo != null">
+				OUT_ORDER_NO = #{outOrderNo,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeChannel != null">
+				TRADE_CHANNEL = #{tradeChannel,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeChannelNo != null">
+				TRADE_CHANNEL_NO = #{tradeChannelNo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where TRADE_FLOW_NO = #{tradeFlowNo,jdbcType=VARCHAR}
+	</update>
+	
+	
+</mapper>

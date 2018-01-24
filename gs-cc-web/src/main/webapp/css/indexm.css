@@ -1,0 +1,8 @@
+
+.frame .financialQuery p {float: left;margin-top: 20px;}
+.frame .financialQuery p a {display: inline-block;width: 64px;height: 28px;line-height: 28px;text-align: center;color: #FFFFFF;background-color: #fd7c3e;cursor: pointer;vertical-align: middle;}
+.frame .financialQuery p span {margin-right: 40px;}
+.frame .financialQuery p span select {width: 175px;height: 24px;border: 1px solid #CCCCCC;}
+.frame .financialFlow {width: 100%;text-align: center;margin-top: 18px;}
+.frame .financialFlow thead {background-color: #EBEFF8;}
+.frame .financialFlow tr {height: 44px;}

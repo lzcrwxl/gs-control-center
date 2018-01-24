@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fbee.modules.mybatis.dao.TenantsInfosMapper">
+	<resultMap id="BaseResultMap"
+		type="com.fbee.modules.mybatis.entity.TenantsInfosEntity">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="tenant_id" jdbcType="INTEGER" property="tenantId" />
+		<result column="job_count" jdbcType="INTEGER" property="jobCount" />
+		<result column="resume_count" jdbcType="INTEGER" property="resumeCount"/>
+	</resultMap>
+	<sql id="Base_Column_List">
+			id, tenant_id, job_count, resume_count
+	</sql>
+	<insert id="insert" parameterType="com.fbee.modules.mybatis.entity.TenantsInfosEntity">
+		insert into tenants_infos(tenant_id, job_count, resume_count, is_usable)
+				 values (#{tenantId}, #{jobCount}, #{resumeCount}, '1')
+	</insert>
+</mapper>

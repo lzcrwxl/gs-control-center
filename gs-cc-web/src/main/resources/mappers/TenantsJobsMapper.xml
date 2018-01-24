@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fbee.modules.mybatis.dao.TenantsJobsMapper">
+  <resultMap id="BaseResultMap" type="com.fbee.modules.mybatis.model.TenantsJobs">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="TENANT_ID" jdbcType="INTEGER" property="tenantId" />
+    <result column="SERVICE_TYPE" jdbcType="VARCHAR" property="serviceType" />
+    <result column="POSITION_NAME" jdbcType="VARCHAR" property="positionName" />
+    <result column="AGE" jdbcType="INTEGER" property="age" />
+    <result column="SALARY" jdbcType="VARCHAR" property="salary" />
+    <result column="DEMAND" jdbcType="VARCHAR" property="demand" />
+    <result column="is_usable" jdbcType="VARCHAR" property="isUsable" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="add_account" jdbcType="VARCHAR" property="addAccount" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modify_account" jdbcType="VARCHAR" property="modifyAccount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, TENANT_ID, SERVICE_TYPE, POSITION_NAME, AGE, SALARY, DEMAND, is_usable, add_time, 
+    add_account, modify_time, modify_account
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tenants_jobs
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tenants_jobs
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fbee.modules.mybatis.model.TenantsJobs">
+  	<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+  		SELECT LAST_INSERT_ID()
+  	</selectKey>
+    insert into tenants_jobs (id, TENANT_ID, SERVICE_TYPE, 
+      POSITION_NAME, AGE, SALARY, 
+      DEMAND, is_usable, add_time, 
+      add_account, modify_time, modify_account
+      )
+    values (#{id,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{serviceType,jdbcType=VARCHAR}, 
+      #{positionName,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{salary,jdbcType=VARCHAR}, 
+      #{demand,jdbcType=VARCHAR}, #{isUsable,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{addAccount,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{modifyAccount,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fbee.modules.mybatis.model.TenantsJobs">
+  	<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+  		SELECT LAST_INSERT_ID() AS id
+  	</selectKey>
+    insert into tenants_jobs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tenantId != null">
+        TENANT_ID,
+      </if>
+      <if test="serviceType != null">
+        SERVICE_TYPE,
+      </if>
+      <if test="positionName != null">
+        POSITION_NAME,
+      </if>
+      <if test="age != null">
+        AGE,
+      </if>
+      <if test="salary != null">
+        SALARY,
+      </if>
+      <if test="demand != null">
+        DEMAND,
+      </if>
+      <if test="isUsable != null">
+        is_usable,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="addAccount != null">
+        add_account,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="modifyAccount != null">
+        modify_account,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceType != null">
+        #{serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="positionName != null">
+        #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="salary != null">
+        #{salary,jdbcType=VARCHAR},
+      </if>
+      <if test="demand != null">
+        #{demand,jdbcType=VARCHAR},
+      </if>
+      <if test="isUsable != null">
+        #{isUsable,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addAccount != null">
+        #{addAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAccount != null">
+        #{modifyAccount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fbee.modules.mybatis.model.TenantsJobs">
+    update tenants_jobs
+    <set>
+      <if test="tenantId != null">
+        TENANT_ID = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceType != null">
+        SERVICE_TYPE = #{serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="positionName != null">
+        POSITION_NAME = #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        AGE = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="salary != null">
+        SALARY = #{salary,jdbcType=VARCHAR},
+      </if>
+      <if test="demand != null">
+        DEMAND = #{demand,jdbcType=VARCHAR},
+      </if>
+      <if test="isUsable != null">
+        is_usable = #{isUsable,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addAccount != null">
+        add_account = #{addAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAccount != null">
+        modify_account = #{modifyAccount,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fbee.modules.mybatis.model.TenantsJobs">
+    update tenants_jobs
+    set TENANT_ID = #{tenantId,jdbcType=INTEGER},
+      SERVICE_TYPE = #{serviceType,jdbcType=VARCHAR},
+      POSITION_NAME = #{positionName,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=INTEGER},
+      SALARY = #{salary,jdbcType=VARCHAR},
+      DEMAND = #{demand,jdbcType=VARCHAR},
+      is_usable = #{isUsable,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      add_account = #{addAccount,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      modify_account = #{modifyAccount,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+	<!-- 查询招聘信息总数 -->
+	<select id="getTenantsJobsInfoCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select 
+			count(1)
+		from tenants_jobs 
+		where 1 = 1
+		<if test="serviceType!=null and serviceType!= '' ">
+		and SERVICE_TYPE = #{serviceType}
+		</if>    
+	</select>
+	<!-- 查询招聘信息列表 -->
+	<select id="getTenantsJobsInfoList" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+			a.id "id",
+			a.TENANT_ID "tenantId",
+			a.POSITION_NAME "positionName",
+			FUNC_GET_CODE_NAME("SERVICE_TYPES",a.SERVICE_TYPE) "serviceType",
+			a.AGE           "age",
+			a.SALARY        "salary",
+			a.is_usable      "isUsable"
+		from tenants_jobs a
+		where 1 = 1 
+		<if test="serviceType!=null and serviceType!= '' ">
+		 and SERVICE_TYPE = #{serviceType}
+		</if>   
+		limit #{offset},#{pageSize} 
+	</select>
+	<!-- 根据主键查询招聘信息 -->
+	<select id="getTenantsJobsInfoById" parameterType="java.lang.Integer" resultType="java.util.Map">
+		SELECT
+			a.id "id",
+			a.TENANT_ID "tenantId",
+			a.POSITION_NAME "positionName",
+			a.SERVICE_TYPE "serviceType",
+		  	a.AGE "age",
+			a.SALARY "salary",
+			a.DEMAND "demand",
+			a.is_usable      "isUsable"
+		FROM
+		tenants_jobs a
+		where 1 = 1
+		and a.id = #{id}
+	</select>
+</mapper>

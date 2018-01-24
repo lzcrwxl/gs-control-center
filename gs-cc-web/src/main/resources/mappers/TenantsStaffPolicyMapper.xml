@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fbee.modules.mybatis.dao.TenantsStaffPolicyMapper">
+	<resultMap id="BaseResultMap"
+		type="com.fbee.modules.mybatis.entity.TenantsStaffPolicyEntity">
+		<id column="STAFF_ID" jdbcType="INTEGER" property="staffId" />
+		<id column="TENANT_ID" jdbcType="INTEGER" property="tenantId" />
+		<id column="POLICY_NO" jdbcType="VARCHAR" property="policyNo" />
+		<result column="POLICY_NAME" jdbcType="VARCHAR" property="policyName" />
+		<result column="POLICY_AMOUNT" jdbcType="DECIMAL" property="policyAmount" />
+		<result column="POLICY_AGENCY" jdbcType="VARCHAR" property="policyAgency" />
+		<result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+		<result column="add_account" jdbcType="VARCHAR" property="addAccount" />
+		<result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+		<result column="modify_account" jdbcType="VARCHAR" property="modifyAccount" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		STAFF_ID, TENANT_ID, POLICY_NO, POLICY_NAME, POLICY_AMOUNT, POLICY_AGENCY,
+		add_time,
+		add_account, modify_time, modify_account
+	</sql>
+
+	<select id="getPolicyInfoByKey"
+		parameterType="com.fbee.modules.mybatis.model.TenantsStaffPolicyKey"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tenants_staff_policy
+		where STAFF_ID = #{staffId,jdbcType=INTEGER}
+		and TENANT_ID = #{tenantId,jdbcType=INTEGER}
+		and POLICY_NO = #{policyNo,jdbcType=VARCHAR}
+	</select>
+  
+	<insert id="insert"
+		parameterType="com.fbee.modules.mybatis.entity.TenantsStaffPolicyEntity">
+		insert into tenants_staff_policy
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="staffId != null">
+				STAFF_ID,
+			</if>
+			<if test="tenantId != null">
+				TENANT_ID,
+			</if>
+			<if test="policyNo != null">
+				POLICY_NO,
+			</if>
+			<if test="policyName != null">
+				POLICY_NAME,
+			</if>
+			<if test="policyAmount != null">
+				POLICY_AMOUNT,
+			</if>
+			<if test="policyAgency != null">
+				POLICY_AGENCY,
+			</if>
+			<if test="addTime != null">
+				add_time,
+			</if>
+			<if test="addAccount != null">
+				add_account,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="modifyAccount != null">
+				modify_account,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="staffId != null">
+				#{staffId,jdbcType=INTEGER},
+			</if>
+			<if test="tenantId != null">
+				#{tenantId,jdbcType=INTEGER},
+			</if>
+			<if test="policyNo != null">
+				#{policyNo,jdbcType=VARCHAR},
+			</if>
+			<if test="policyName != null">
+				#{policyName,jdbcType=VARCHAR},
+			</if>
+			<if test="policyAmount != null">
+				#{policyAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="policyAgency != null">
+				#{policyAgency,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null">
+				#{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="addAccount != null">
+				#{addAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyAccount != null">
+				#{modifyAccount,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="update"
+		parameterType="com.fbee.modules.mybatis.entity.TenantsStaffPolicyEntity">
+		update tenants_staff_policy
+		<set>
+			<if test="policyName != null">
+				POLICY_NAME = #{policyName,jdbcType=VARCHAR},
+			</if>
+			<if test="policyAmount != null">
+				POLICY_AMOUNT = #{policyAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="policyAgency != null">
+				POLICY_AGENCY = #{policyAgency,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null">
+				add_time = #{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="addAccount != null">
+				add_account = #{addAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyAccount != null">
+				modify_account = #{modifyAccount,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where STAFF_ID = #{staffId,jdbcType=INTEGER}
+		and TENANT_ID = #{tenantId,jdbcType=INTEGER}
+		and POLICY_NO = #{policyNo,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="getPolicyList"
+		parameterType="com.fbee.modules.mybatis.entity.TenantsStaffPolicyEntity"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tenants_staff_policy
+		where STAFF_ID = #{staffId,jdbcType=INTEGER}
+		and TENANT_ID = #{tenantId,jdbcType=INTEGER}
+	</select>
+</mapper>

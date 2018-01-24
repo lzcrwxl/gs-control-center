@@ -1,0 +1,87 @@
+.frame .my-site {width: 100%;min-width: 1000px;margin-top: 34px;/*296px*/}
+.frame .my-site .mode {width: 330px;margin: 0 auto;}
+.frame .my-site .mode div p {width: 110px;height: 24px;line-height: 24px;text-align: center;margin: 14px auto 0 auto;color: #FFF;border-radius: 30px;}
+.frame .my-site .mode .pc {float: left;}
+.frame .my-site .mode .pc p {background-color: #6DAFE3;}
+.frame .my-site .mode .wap {float: right;}
+.frame .my-site .mode .wap img {width: 130px;height: 115px;}
+.frame .my-site .mode .wap p {background-color: #69DE5A;}
+.frame .my-site table {width: 340px;margin: 0 auto;}
+.frame .my-site table tr {height: 40px;}
+.frame .my-site table td {vertical-align: top;}
+.frame .my-site table tr td:first-child {color: #808080;}
+.frame .my-site .exp-date {border-left: 2px solid #F0F0F0;text-align: center;}
+
+
+.frame .my-account {padding-bottom: 35px;}
+.frame .my-account .eCharts {position: relative;float: left;width: 25%;}
+.frame .my-account .eCharts p {position: absolute;z-index: 10;top: 0;bottom: 0;left: 0;right: 0;line-height: 180px;text-align: center;}
+.frame .my-account .ma-data {width: 46%;float: left;}
+.frame .my-account .ma-data p {width: 354px;padding-left: 42px;border-bottom: 2px solid;height: 34px;line-height: 34px;margin: 17px auto 0 auto ;}
+.frame .my-account .ma-data .mad1 {background: url(../img/ma1.jpg) no-repeat left;border-color: #6DAFE3;}
+.frame .my-account .ma-data .mad2 {background: url(../img/ma2.jpg) no-repeat left;border-color: #79E096;}
+.frame .my-account .ma-data .mad3 {background: url(../img/ma3.jpg) no-repeat left;border-color: #A7ABD6;}
+.frame .my-account .ma-data p span {text-align: right;display: inline-block;width: 70%;}
+.frame .my-account .money-btn {float: left; height: 104px;width: 28%;border-left: 2px solid #F0F0F0;margin-top: 42px;}
+.frame .my-account .money-btn .mb-frame {margin: 35px auto 0 auto;width: 218px;height: 34px;}
+.frame .my-account .money-btn .mb-frame a {border: 1px solid #0A7EE3;color: #0A7EE3;display: block;width: 88px;height: 32px;line-height: 32px;text-align: center;font-size: 16px;}
+.frame .my-account .money-btn .mb-frame .withdraw {float: left;}
+.frame .my-account .money-btn .mb-frame .deposit {float: right;}
+
+.frame .credit-card {padding-top: 28px;margin:0 50px;border-top: 2px solid #F0F0F0;}
+.frame .credit-card img {width: 33px;height: 25px;}
+.frame .credit-card i {margin-left: 20px;}
+.frame .credit-card span {margin-left: 20px;}
+
+/*登录页面*/
+.loginBg {z-index: -10;position: absolute;left: 0;top: 0;}
+.loginBg img {width: 100%;height: 100%;}
+.loginCase {width: 434px;height: 466px;background-color: #FFFFFF;border-radius: 3px;position: absolute;left: 50%;top: 50%;margin-top: -180px;}
+.loginCase .lc-logo {width: 236px;height: 48px;margin: 20px 0 54px 20px;}
+.loginCase .lc-logo img {widows: 100%;height: 100%;}
+.loginCase .lc-inp {width: 320px;margin: 0 auto;}
+.loginCase .lc-inp p {width: 318px;height: 24px;border: 1px solid #B3B3B3;padding: 6px 0;margin-bottom: 10px;}
+.loginCase .lc-inp p em {display: inline-block;width: 52px;height: 100%;border-right: 1px solid #B3B3B3;}
+.loginCase .lc-inp p input {border: none;height: 100%;vertical-align: top;width: 250px;padding-left: 10px;}
+.loginCase .lc-inp .lc-account em {background: url(../image/login1.png) no-repeat center;}
+.loginCase .lc-inp .lc-password em {background: url(../image/login2.png) no-repeat center;}
+.loginCase .lc-inp .lc-code {width: 100%;height: 38px;}
+.loginCase .lc-inp .lc-code p {width: 198px;float: left;}
+.loginCase .lc-inp .lc-code p em {background: url(../image/login3.png) no-repeat center;}
+.loginCase .lc-inp .lc-code p input {width: 130px;}
+.loginCase .lc-inp .lc-code img {float: right;width: 100px;height: 100%;}
+.loginCase .login-btn {border: none;width: 320px;height: 38px;background-color: #0A7EE3;color: #FFFFFF;font-size: 18px;margin-top: 66px;}
+
+
+.frame .financialFlow thead tr {height: 46px;background-color: #EBEFF8;}
+.frame .financialFlow tbody tr {cursor: pointer;height: 46px;background-color: #F5F5F5;border-top: 2px solid #FFFFFF;}
+.frame .financialFlow tbody tr:hover {background-color: #C1DEF8!important;}
+
+
+.naviLeft {width: 188px;background-color: #EBEFF8;position: absolute;}
+.naviLeft ul {margin-top: 30px;}
+.naviLeft ul li {height: 44px;line-height: 44px;vertical-align: top;cursor: pointer;margin-bottom: 5px;}
+.naviLeft ul .nl_on {background-color: #FFF;}
+.naviLeft ul .nl_on>a {color: #0A7EE3!important;}
+.naviLeft ul .nl_on>a em {background-image: url(../image/Satyr_on.png)!important;}
+.naviLeft ul li a {display: block;width: 128px;padding: 0 40px;text-align: right; font-size: 16px;position: relative;}
+.naviLeft ul li a:visited {color: #333333;}
+.naviLeft ul li a em {background-image: url(../image/Satyr.png);position: absolute;top: 12px;left: 40px;}
+.naviLeft ul li .ddgl em {display:inline-block;background-position: -100px 0px; width: 20px; height: 20px;}
+.naviLeft ul li .yygl em {display:inline-block;background-position: -120px 0px; width: 20px; height: 20px;}
+.naviLeft ul li:hover a em {background-image: url(../image/Satyr_on.png)!important;}
+.naviLeft ul li:hover {background-color: #FFF;}
+.naviLeft ul li:hover>a {color: #0A7EE3;}
+.naviLeft ul .beeshare-btn div {display: none;}
+.naviLeft ul .beeshare-btn div a {display: block;height: 36px;line-height: 36px;background-color: #FFFFFF;margin-top: 1px;}
+.naviLeft ul .beeshare-btn div a:hover {color: #0A7EE3;}
+.particulars {margin-left: 188px;}
+.particulars .frame {min-width: 950px!important;}
+.particulars .frame .tenantStatus {height: 50px;width: 100%;border-bottom: 2px solid #EBEFF8;line-height: 50px;font-weight: bold;}
+.particulars .frame .tenantStatus ul {width: 100%;height: 100%;}
+.particulars .frame .tenantStatus ul li {float: left; width: 100px;height: 100%;text-align: center;position: relative;}
+.particulars .frame .tenantStatus ul li a {display: block;position: absolute;left: 0;top: 0;width: 100%;height: 100%;cursor: pointer;}
+.particulars .frame .tenantStatus ul li .os_on {color: #0A7EE3;border-bottom: 2px solid #0A7EE3;}
+.particulars .frame .tenantStatus ul li a:hover {color: #0A7EE3!important;border-bottom: 2px solid #0A7EE3;}
+
+.financialFlow .revise{background: url(../image/revise.png) no-repeat;}

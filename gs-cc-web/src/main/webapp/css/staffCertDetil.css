@@ -1,0 +1,34 @@
+
+.orderDetails { height:100%;width:100%;z-index: 20;background-color: #DBE6F0;overflow: auto;padding: 4px 0;}
+.orderDetails .infoCard {margin: 10px;padding: 0 15px 15px 15px;background-color: #FFFFFF;box-shadow:3px 3px 5px 2px #C3D5E4;position: relative;}
+.orderDetails .infoCard .pending {float: right;color: #FF9C00;margin-top: 15px;}
+.orderDetails .infoCard .title {padding-top: 15px;}
+.orderDetails .infoCard .edit {margin-top: 15px;}
+.orderDetails .infoCard .reservation-info {border-top: 1px solid #F5F5F5;margin: 10px 0 25px 0;}
+.orderDetails .infoCard .reservation-info p {margin-top: 15px;}
+.orderDetails .infoCard .reservation-info p i{margin-left: 30px;text-align: right;line-height:15px;}
+
+
+
+.orderDetails .infoCard .client-info {padding-top: 5px;border-top: 1px solid #F5F5F5;margin: 10px 0 25px 0;}
+.orderDetails .infoCard .client-info p {margin-top: 10px; }
+.orderDetails .infoCard .client-info p i {width: 33%;display: inline-block;margin-top: 8px;}
+.orderDetails .infoCard .client-info p label {font-weight: bold;display: inline-block;width: 70px;text-align: right;margin-right: 8px;}
+
+
+.orderDetails .infoCard .ae-frame {border: 1px solid #CCCCCC!important;background-color: #FAFAFA;}
+.orderDetails .infoCard input[type="text"] {width: 134px;height: 18px;}
+.orderDetails .infoCard select {width: 142px;height: 20px;border: 1px solid #CCCCCC;}
+
+.orderDetails .bottom-navi1 {width:983px;margin-left:445px; height: 52px;margin-top:130px;}
+.orderDetails .bottom-navi1 ul {height: 100%;text-align: center;float: left;}
+.orderDetails .bottom-navi1 ul li {height: 100%;float: left;width: 120px;cursor: pointer;}
+.orderDetails .bottom-navi1 ul li a {display: block;height: 32px;line-height: 32px;color: #3371c2;border-left: 1px solid #666666;width: 118px;margin-top: 25px;font-size: 16px;font-weight: bold;}
+.orderDetails .bottom-navi1 ul li:first-child a {margin-left: 1px;border: none;}
+.orderDetails .bottom-navi1 ul li:hover a {color:#ff8080 ;}
+
+.orderDetails .bottom-navi2 {width:983px;margin-left:555px; height: 52px;}
+.orderDetails .bottom-navi2 ul {height: 100%;text-align: center;float: left;}
+.orderDetails .bottom-navi2 ul li {height: 100%;float: left;width: 120px;cursor: pointer;}
+.orderDetails .bottom-navi2 ul li a {display: block;height: 32px;line-height: 32px;color: #3371c2;width: 118px;margin-top: 25px;font-size: 22px;font-weight: bold;}
+.orderDetails .bottom-navi2 ul li:hover a {color:#ff8080 ;}

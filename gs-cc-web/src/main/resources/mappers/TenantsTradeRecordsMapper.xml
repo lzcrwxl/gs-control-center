@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fbee.modules.mybatis.dao.TenantsTradeRecordsMapper">
+	 <resultMap id="BaseResultMap" type="com.fbee.modules.mybatis.model.TenantsTradeRecords">
+    <id column="TRADE_NO" jdbcType="VARCHAR" property="tradeNo" />
+    <result column="TENANT_ID" jdbcType="INTEGER" property="tenantId" />
+    <result column="TRADE_TIME" jdbcType="TIMESTAMP" property="tradeTime" />
+    <result column="FINANCE_TYPE" jdbcType="VARCHAR" property="financeType" />
+    <result column="TRADE_AMOUNT" jdbcType="DECIMAL" property="tradeAmount" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="COUNTER_FEE" jdbcType="DECIMAL" property="counterFee" />
+    <result column="IN_OUT_NO" jdbcType="VARCHAR" property="inOutNo" />
+    <result column="TRADE_TYPE" jdbcType="VARCHAR" property="tradeType" />
+    <result column="REMARKS" jdbcType="VARCHAR" property="remarks" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="add_account" jdbcType="VARCHAR" property="addAccount" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modify_account" jdbcType="VARCHAR" property="modifyAccount" />
+    <result column="is_usable" jdbcType="VARCHAR" property="isUsable" />
+  </resultMap>
+	<sql id="Base_Column_List">
+		 TRADE_NO, TENANT_ID, TRADE_TIME, FINANCE_TYPE, TRADE_AMOUNT, STATUS, COUNTER_FEE, 
+    	 IN_OUT_NO, TRADE_TYPE, REMARKS, add_time, add_account, modify_time, modify_account, 
+    	 is_usable
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tenants_trade_records
+    where TRADE_NO = #{tradeNo,jdbcType=VARCHAR}
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fbee.modules.mybatis.model.TenantsTradeRecords">
+    update tenants_trade_records
+    <set>
+      <if test="tenantId != null">
+        TENANT_ID = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="tradeTime != null">
+        TRADE_TIME = #{tradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="financeType != null">
+        FINANCE_TYPE = #{financeType,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeAmount != null">
+        TRADE_AMOUNT = #{tradeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="counterFee != null">
+        COUNTER_FEE = #{counterFee,jdbcType=DECIMAL},
+      </if>
+      <if test="inOutNo != null">
+        IN_OUT_NO = #{inOutNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeType != null">
+        TRADE_TYPE = #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        REMARKS = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addAccount != null">
+        add_account = #{addAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAccount != null">
+        modify_account = #{modifyAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="isUsable != null">
+        is_usable = #{isUsable,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TRADE_NO = #{tradeNo,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+	<sql id="Query_Funds_List">
+		<if test="tradeTimeLeft != null and tradeTimeLeft !=''">
+			and DATE_FORMAT(a.add_time,'%Y-%m-%d') <![CDATA[>=]]> #{tradeTimeLeft,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tradeTimeRight !=null and tradeTimeRight !=''">
+			and  DATE_FORMAT(a.add_time,'%Y-%m-%d') <![CDATA[<=]]> #{tradeTimeRight,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tenantName !=null and tenantName !=''">
+			and c.WEBSITE_NAME LIKE concat(concat('%',#{tenantName}),'%')
+		</if>
+		<if test="tradeType !=null and tradeType !=''">
+			and  a.PAY_TYPE=#{tradeType,jdbcType=VARCHAR}
+		</if>
+		<if test="tradeChannel !=null and tradeChannel !=''">
+			and  b.TRADE_CHANNEL=#{tradeChannel,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	
+	
+	
+	<sql id="queryclearTKist">
+		<if test="tradeTimeLeft != null and tradeTimeLeft !=''">
+			and DATE_FORMAT(a.TRADE_TIME, '%Y-%m-%d') <![CDATA[>=]]> #{tradeTimeLeft,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tradeTimeRight !=null and tradeTimeRight !=''">
+			and DATE_FORMAT(a.TRADE_TIME, '%Y-%m-%d') <![CDATA[<=]]> #{tradeTimeRight,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tradeType !=null and tradeType !=''">
+			and a.TRADE_TYPE=#{tradeType,jdbcType=VARCHAR}
+		</if>
+		<if test="tradeChannel !=null and tradeChannel !=''">
+			and b.TRADE_CHANNEL=#{tradeChannel,jdbcType=VARCHAR}
+		</if>
+		<if test="status !=null and status !=''">
+			and  a.STATUS=#{status,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<sql id="queryclearTlist">
+		<if test="tradeTimeLeft != null and tradeTimeLeft !=''">
+			and DATE_FORMAT(a.TRADE_TIME, '%Y-%m-%d') <![CDATA[>=]]> #{tradeTimeLeft,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tradeTimeRight !=null and tradeTimeRight !=''">
+			and DATE_FORMAT(a.TRADE_TIME, '%Y-%m-%d')  <![CDATA[<=]]> #{tradeTimeRight,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tradeType !=null and tradeType !=''">
+			and a.TRADE_TYPE=#{tradeType,jdbcType=VARCHAR}
+		</if>
+		<if test="status !=null and status !=''">
+			and  a.STATUS=#{status,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	
+	<!-- 总控平台-账户总览-充值总额 -->
+	<select id="getTenantsCTradeAmount" parameterType="java.lang.Integer"
+		resultType="java.lang.String">
+		SELECT 
+			  sum(TRADE_AMOUNT) "CtradeAmount"
+		 FROM
+		 	 tenants_trade_records
+		where
+		 	TRADE_TYPE='01'
+	</select>
+	
+	<!-- 总控平台-账户总览-提现总额 -->
+	<select id="getTenantsTTradeAmount" parameterType="java.lang.Integer"
+		resultType="java.lang.String">
+		SELECT 
+			  sum(TRADE_AMOUNT) "TtradeAmount"
+		 FROM
+		 	 tenants_trade_records
+		where
+		 	TRADE_TYPE='02'
+	</select>
+	
+	<!-- 总控平台-账户总览-退款总额 -->
+	<select id="getTenantsDTradeAmount" parameterType="java.lang.Integer"
+		resultType="java.lang.String">
+		SELECT 
+			  sum(TRADE_AMOUNT) "DTtradeAmount"
+		 FROM
+		 	 tenants_trade_records
+		where
+		 	TRADE_TYPE='09'
+	</select>
+	
+	<!-- 总控平台-账户总览-手续费总额 -->
+	<select id="getTenantsSTradeAmount" parameterType="java.lang.Integer"
+		resultType="java.lang.String">
+		SELECT 
+			  sum(COUNTER_FEE) "StradeAmount"
+		 FROM
+		 	 tenants_trade_records
+		where
+		 	TRADE_TYPE='05'
+	</select>
+	<!-- 总控平台-账户总览-续费总额  (暂时没有) -->
+	
+	
+	<!-- 总控平台-财务流水总条数 -->
+	<select id="getCount" parameterType="com.fbee.modules.mybatis.entity.TenantsTradeRecordsEntity"
+		resultType="java.lang.Integer">
+		select 
+				count(0)
+		from 
+				tenants_finance_records a 
+				LEFT JOIN
+				trade_records b
+				on a.PAY_NO=b.TRADE_FLOW_NO
+				LEFT JOIN
+				tenants_apps c
+				ON
+				a.TENANT_ID=c.TENANT_ID
+		<include refid="Query_Funds_List" />
+	</select>
+	
+	<!-- 总控平台-财务流水信息 -->
+	<select id="getTenantsRecordList"
+		parameterType="com.fbee.modules.mybatis.entity.TenantsTradeRecordsEntity"
+		resultType="java.util.Map">
+		select
+				a.* ,
+				b.TRADE_CHANNEL,
+				b.ORDER_NO,
+				b.TRADE_FLOW_NO,
+				c.WEBSITE_NAME
+				
+				from 
+					tenants_finance_records a 
+				LEFT JOIN
+				trade_records b
+				on a.PAY_NO=b.TRADE_FLOW_NO
+				LEFT JOIN
+				tenants_apps c
+				ON
+				a.TENANT_ID=c.TENANT_ID
+			<include refid="Query_Funds_List" />
+		order by a.add_time desc
+		limit #{pageNumber,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+	<!-- 总控平台-提现/手续费总数 -->
+	<select id="getTixianCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select 
+				count(0)
+		from
+				tenants_trade_records a ,
+				tenants_apps c ,
+				tenants_finance_records s
+		WHERE
+				a.TENANT_ID=s.TENANT_ID
+				and a.STATUS in ('01','02')
+				and a.IN_OUT_NO=s.IN_OUT_NO
+				and a.TRADE_TYPE in ('02','05') 
+				and a.TENANT_ID=c.TENANT_ID
+				AND s.is_usable='1'
+			<include refid="queryclearTlist" />
+	</select>
+	<!-- 总控平台-提现/手续费查询-->
+	<select id="getTixianList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+				 DATE_FORMAT(a.TRADE_TIME,'%Y-%m-%d %H:%i:%s') "tradeTime",
+				c.WEBSITE_NAME 'tenantName',
+				a.TRADE_AMOUNT 'tradeAmount',
+				"tradeChannel" "",
+				FUNC_GET_CODE_NAME("TRADE_TYPE" , a.TRADE_TYPE, "1") 'tradeType',
+				DATE_FORMAT(a.add_time,'%Y-%m-%d %H:%i:%s') 'addTime',
+				FUNC_GET_CODE_NAME("RECODR_STATUS" , a.STATUS, "1") 'status',
+				a.REMARKS 'remarks',
+				a.TRADE_NO  'tradeNo',
+				a.TENANT_ID 'tenantId',
+				s.IN_OUT_NO 'inOutNo'
+		FROM
+				tenants_trade_records a ,
+				tenants_apps c ,
+				tenants_finance_records s
+		WHERE
+				a.TENANT_ID=s.TENANT_ID
+				and a.STATUS in ('01','02')
+				and a.IN_OUT_NO=s.IN_OUT_NO
+				and a.TRADE_TYPE in ('02','05') 
+				and a.TENANT_ID=c.TENANT_ID
+				AND s.is_usable='1'
+			<include refid="queryclearTlist" />
+		order by a.TRADE_TIME desc
+		limit #{pageNumber,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+	<!-- 总控平台-退款总数 -->
+	<select id="getTuikuanCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select 
+				count(0)
+		from
+				tenants_trade_records a ,
+				trade_records b ,
+				tenants_apps c ,
+				tenants_finance_records s
+		WHERE
+				a.TENANT_ID=s.TENANT_ID
+				and a.STATUS in ('01','02')
+				and a.IN_OUT_NO=s.IN_OUT_NO
+				and a.TRADE_TYPE = '09'
+				and a.TENANT_ID = c.TENANT_ID
+				and s.is_usable='1'
+				and b.TRADE_FLOW_NO= s.PAY_NO
+		<include refid="queryclearTKist" />
+	</select>
+	<!-- 总控平台-退款查询-->
+	<select id="getTuikuanList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+				 DATE_FORMAT(a.TRADE_TIME,'%Y-%m-%d %H:%i:%s') "tradeTime",
+				c.WEBSITE_NAME 'tenantName',
+				a.TRADE_AMOUNT 'tradeAmount',
+				FUNC_GET_CODE_NAME("TRADE_TYPE" , a.TRADE_TYPE, "1") 'tradeType',
+				FUNC_GET_CODE_NAME("TRADE_CHANNEL" , b.TRADE_CHANNEL, "1") 'tradeChannel',
+				DATE_FORMAT(a.add_time,'%Y-%m-%d %H:%i:%s') 'addTime',
+				FUNC_GET_CODE_NAME("RECODR_STATUS" , a.STATUS, "1") 'status',
+				a.REMARKS 'remarks',
+				a.TRADE_NO  'tradeNo',
+				a.TENANT_ID 'tenantId',
+				a.IN_OUT_NO 'inOutNo',
+				b.ORDER_NO 'orderNo'
+		FROM
+				tenants_trade_records a ,
+				trade_records b ,
+				tenants_apps c ,
+				tenants_finance_records s
+		WHERE
+				a.TENANT_ID=s.TENANT_ID
+				and a.STATUS in ('01','02')
+				and a.IN_OUT_NO=s.IN_OUT_NO
+				and a.TRADE_TYPE = '09'
+				and a.TENANT_ID = c.TENANT_ID
+				and s.is_usable='1'
+				and b.TRADE_FLOW_NO= s.PAY_NO
+			<include refid="queryclearTKist" />
+		order by a.TRADE_TIME desc
+		limit #{pageNumber,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+	
+	<select id="getTixianListExport" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+				 DATE_FORMAT(a.TRADE_TIME,'%Y年%m月%d日 %H时%i分%s秒') "tradeTime",
+				c.WEBSITE_NAME 'tenantName',
+				a.TRADE_AMOUNT 'tradeAmount',
+				FUNC_GET_CODE_NAME("TRADE_TYPE" , a.TRADE_TYPE, "1") 'tradeType',
+				DATE_FORMAT(a.add_time,'%Y年%m月%d日 %H时%i分%s秒') 'addTime',
+				FUNC_GET_CODE_NAME("RECODR_STATUS" , a.STATUS, "1") 'status',
+				a.REMARKS 'remarks',
+				a.TRADE_NO  'tradeNo',
+				a.TENANT_ID 'tenantId',
+				s.IN_OUT_NO 'inOutNo'
+		FROM
+				tenants_trade_records a ,
+				tenants_apps c ,
+				tenants_finance_records s
+		WHERE
+				a.TENANT_ID=s.TENANT_ID
+				and a.STATUS in ('01','02')
+				and a.IN_OUT_NO=s.IN_OUT_NO
+				and a.TRADE_TYPE in ('02','05') 
+				and a.TENANT_ID=c.TENANT_ID
+				AND s.is_usable='1'
+			<include refid="queryclearTlist" />
+			order by a.TRADE_TIME desc
+	</select>
+	<select id="getTuikuanListExport" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+				 DATE_FORMAT(a.TRADE_TIME,'%Y年%m月%d日 %H时%i分%s秒') "tradeTime",
+				c.WEBSITE_NAME 'tenantName',
+				a.TRADE_AMOUNT 'tradeAmount',
+				FUNC_GET_CODE_NAME("TRADE_TYPE" , a.TRADE_TYPE, "1") 'tradeType',
+				FUNC_GET_CODE_NAME("TRADE_CHANNEL" , b.TRADE_CHANNEL, "1") 'tradeChannel',
+				DATE_FORMAT(a.add_time,'%Y年%m月%d日 %H时%i分%s秒') 'addTime',
+				FUNC_GET_CODE_NAME("RECODR_STATUS" , a.STATUS, "1") 'status',
+				a.REMARKS 'remarks',
+				a.TRADE_NO  'tradeNo',
+				a.TENANT_ID 'tenantId',
+				a.IN_OUT_NO 'inOutNo',
+				b.ORDER_NO 'orderNo'
+		FROM
+				tenants_trade_records a ,
+				trade_records b ,
+				tenants_apps c ,
+				tenants_finance_records s
+		WHERE
+				a.TENANT_ID=s.TENANT_ID
+				and a.STATUS in ('01','02')
+				and a.IN_OUT_NO=s.IN_OUT_NO
+				and a.TRADE_TYPE = '09'
+				and a.TENANT_ID = c.TENANT_ID
+				and s.is_usable='1'
+				and b.TRADE_FLOW_NO= s.PAY_NO
+			<include refid="queryclearTKist" />
+			order by a.TRADE_TIME desc
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 总控平台-清算总数 -->
+	<select id="getClearCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select 
+			count(0)
+		from (
+		SELECT
+				DATE_FORMAT(a.TRADE_TIME,'%Y-%m-%d %H:%i:%s') "tradeTime",
+				c.WEBSITE_NAME 'tenantName',
+				a.TRADE_AMOUNT 'tradeAmount',
+				IFNULL("","") 'tradeChannel',
+				FUNC_GET_CODE_NAME("TRADE_TYPE" , a.TRADE_TYPE, "1") 'tradeType',
+				DATE_FORMAT(a.add_time,'%Y-%m-%d %H:%i:%s') 'addTime',
+				FUNC_GET_CODE_NAME("RECODR_STATUS" , a.STATUS, "1") 'status',
+				a.REMARKS 'remarks',
+				a.TRADE_NO  'tradeNo',
+				a.TENANT_ID 'tenantId',
+				s.IN_OUT_NO 'inOutNo',
+				'' orderNo
+		FROM
+				tenants_trade_records a ,
+				tenants_apps c ,
+				tenants_finance_records s
+		WHERE
+				a.TENANT_ID=s.TENANT_ID
+				and a.STATUS in ('01','02')
+				and a.IN_OUT_NO=s.IN_OUT_NO
+				and a.TRADE_TYPE in ('02','05') 
+				and a.TENANT_ID=c.TENANT_ID
+				AND s.is_usable='1'				
+		union all
+
+		SELECT		
+				DATE_FORMAT(a.TRADE_TIME,'%Y-%m-%d %H:%i:%s') "tradeTime",
+				c.WEBSITE_NAME 'tenantName',
+				a.TRADE_AMOUNT 'tradeAmount',
+				FUNC_GET_CODE_NAME("TRADE_CHANNEL" , b.TRADE_CHANNEL, "1") 'tradeChannel',
+				FUNC_GET_CODE_NAME("TRADE_TYPE" , a.TRADE_TYPE, "1") 'tradeType',
+				DATE_FORMAT(a.add_time,'%Y-%m-%d %H:%i:%s') 'addTime',
+				FUNC_GET_CODE_NAME("RECODR_STATUS" , a.STATUS, "1") 'status',
+				a.REMARKS 'remarks',
+				a.TRADE_NO  'tradeNo',
+				a.TENANT_ID 'tenantId',
+				a.IN_OUT_NO 'inOutNo',
+				b.ORDER_NO 'orderNo'
+		FROM
+				tenants_trade_records a ,
+				trade_records b ,
+				tenants_apps c ,
+				tenants_finance_records s
+		WHERE
+				a.TENANT_ID=s.TENANT_ID
+				and a.STATUS in ('01','02')
+				and a.IN_OUT_NO=s.IN_OUT_NO
+				and a.TRADE_TYPE = '09'
+				and a.TENANT_ID = c.TENANT_ID
+				and s.is_usable='1'
+				and b.TRADE_FLOW_NO= s.PAY_NO
+				
+		) a 
+		order by addTime desc
+	</select>
+	<!-- 总控平台-清算查询-->
+	<select id="getClearList" parameterType="java.util.Map" resultType="java.util.Map">
+		select 
+			tradeTime,
+			tenantName,
+			tradeAmount,
+			tradeChannel,
+			tradeType,
+			addTime,
+			status,
+			remarks,
+			tradeNo,
+			tenantId,
+			inOutNo,
+			orderNo
+		from (
+		SELECT
+				DATE_FORMAT(a.TRADE_TIME,'%Y-%m-%d %H:%i:%s') "tradeTime",
+				c.WEBSITE_NAME 'tenantName',
+				a.TRADE_AMOUNT 'tradeAmount',
+				IFNULL("","") 'tradeChannel',
+				FUNC_GET_CODE_NAME("TRADE_TYPE" , a.TRADE_TYPE, "1") 'tradeType',
+				DATE_FORMAT(a.add_time,'%Y-%m-%d %H:%i:%s') 'addTime',
+				FUNC_GET_CODE_NAME("RECODR_STATUS" , a.STATUS, "1") 'status',
+				a.REMARKS 'remarks',
+				a.TRADE_NO  'tradeNo',
+				a.TENANT_ID 'tenantId',
+				s.IN_OUT_NO 'inOutNo',
+				'' orderNo
+		FROM
+				tenants_trade_records a ,
+				tenants_apps c ,
+				tenants_finance_records s
+		WHERE
+				a.TENANT_ID=s.TENANT_ID
+				and a.STATUS in ('01','02')
+				and a.IN_OUT_NO=s.IN_OUT_NO
+				and a.TRADE_TYPE in ('02','05') 
+				and a.TENANT_ID=c.TENANT_ID
+				AND s.is_usable='1'				
+	union all
+
+		SELECT		
+				DATE_FORMAT(a.TRADE_TIME,'%Y-%m-%d %H:%i:%s') "tradeTime",
+				c.WEBSITE_NAME 'tenantName',
+				a.TRADE_AMOUNT 'tradeAmount',
+				FUNC_GET_CODE_NAME("TRADE_CHANNEL" , b.TRADE_CHANNEL, "1") 'tradeChannel',
+				FUNC_GET_CODE_NAME("TRADE_TYPE" , a.TRADE_TYPE, "1") 'tradeType',
+				DATE_FORMAT(a.add_time,'%Y-%m-%d %H:%i:%s') 'addTime',
+				FUNC_GET_CODE_NAME("RECODR_STATUS" , a.STATUS, "1") 'status',
+				a.REMARKS 'remarks',
+				a.TRADE_NO  'tradeNo',
+				a.TENANT_ID 'tenantId',
+				a.IN_OUT_NO 'inOutNo',
+				b.ORDER_NO 'orderNo'
+		FROM
+				tenants_trade_records a ,
+				trade_records b ,
+				tenants_apps c ,
+				tenants_finance_records s
+		WHERE
+				a.TENANT_ID=s.TENANT_ID
+				and a.STATUS in ('01','02')
+				and a.IN_OUT_NO=s.IN_OUT_NO
+				and a.TRADE_TYPE = '09'
+				and a.TENANT_ID = c.TENANT_ID
+				and s.is_usable='1'
+				and b.TRADE_FLOW_NO= s.PAY_NO
+				
+	) a 
+	where 
+		<if test="tradeTimeLeft != null and tradeTimeLeft !=''">
+			and DATE_FORMAT(TRADE_TIME, '%Y-%m-%d') <![CDATA[>=]]> #{tradeTimeLeft,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tradeTimeRight !=null and tradeTimeRight !=''">
+			and DATE_FORMAT(TRADE_TIME, '%Y-%m-%d') <![CDATA[<=]]> #{tradeTimeRight,jdbcType=TIMESTAMP}
+		</if>
+		<if test="tradeType !=null and tradeType !=''">
+			and TRADE_TYPE=#{tradeType,jdbcType=VARCHAR}
+		</if>
+		<if test="tradeChannel !=null and tradeChannel !=''">
+			and TRADE_CHANNEL=#{tradeChannel,jdbcType=VARCHAR}
+		</if>
+		<if test="status !=null and status !=''">
+			and  STATUS=#{status,jdbcType=VARCHAR}
+		</if>
+		order by addTime desc
+	</select>
+	
+	
+	
+	
+	
+</mapper>

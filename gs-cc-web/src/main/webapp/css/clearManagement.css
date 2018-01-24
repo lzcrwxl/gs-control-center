@@ -1,0 +1,53 @@
+
+.naviLeft {width: 188px;background-color: #EBEFF8;position: absolute;}
+.naviLeft ul {margin-top: 30px;}
+.naviLeft ul li {height: 44px;line-height: 44px;vertical-align: top;cursor: pointer;margin-bottom: 5px;}
+.naviLeft ul .nl_on {background-color: #FFF;}
+.naviLeft ul .nl_on>a {color: #0A7EE3!important;}
+.naviLeft ul .nl_on>a em {background-image: url(../image/Satyr_on.png)!important;}
+.naviLeft ul li a {display: block;width: 108px;padding: 0 40px;text-align: right; font-size: 16px;position: relative;}
+.naviLeft ul li a:visited {color: #333333;}
+.naviLeft ul li a em {background-image: url(../image/Satyr.png);position: absolute;top: 12px;left: 40px;}
+.naviLeft ul li .ddgl em {display:inline-block;background-position: -100px 0px; width: 20px; height: 20px;}
+.naviLeft ul li .yygl em {display:inline-block;background-position: -120px 0px; width: 20px; height: 20px;}
+.naviLeft ul li:hover a em {background-image: url(../image/Satyr_on.png)!important;}
+.naviLeft ul li:hover {background-color: #FFF;}
+.naviLeft ul li:hover>a {color: #0A7EE3;}
+.naviLeft ul .beeshare-btn div {display: none;}
+.naviLeft ul .beeshare-btn div a {display: block;height: 36px;line-height: 36px;background-color: #FFFFFF;margin-top: 1px;}
+.naviLeft ul .beeshare-btn div a:hover {color: #0A7EE3;}
+.particulars {margin-left: 188px;}
+.particulars .frame {min-width: 950px!important;}
+
+.particulars .frame .orderSearch {padding: 10px 0;position: relative;}
+.particulars .frame .orderSearch div {float: right;}
+.particulars .frame .orderSearch div .os-box {float: left; width: 280px;height: 26px;border: 1px solid #0A7EE3;position: relative;overflow: hidden;margin-right: 16px;}
+.particulars .frame .orderSearch div .os-box input[type="text"] {position: absolute;height: 28px;width: 198px;left: -2px;top: -2px;}
+.particulars .frame .orderSearch div .os-box a {display: block;position: absolute;right: 0;top: 0;width: 78px;height: 100%;background-color: #0A7EE3;color: #FFFFFF;text-align: center;line-height: 26px;cursor: pointer;}
+.particulars .frame .orderSearch div .moreFilter {float: left;display:block; width: 110px;height: 26px;border: 1px solid #0A7EE3;line-height: 26px;background: url(../img/down.png) no-repeat;background-position: 95% 55%;padding-left: 8px;cursor: pointer;}
+
+
+
+
+
+.particulars .frame .orderSearch .FilterList-om { float: left;width: 98%;top: 85px;padding: 12px 10px;background-color: #FFFFFF;border: 1px solid #E6E6E6;}
+.particulars .frame .orderSearch .FilterList-om p span {margin-left: 42px;}
+.particulars .frame .orderSearch .FilterList-om p span:first-child {margin-left: 0;}
+.particulars .frame .orderSearch .FilterList-om p span label {display: inline-block;width: 77px;text-align: right;margin-right: 14px;}
+.particulars .frame .orderSearch .FilterList-om p span input[type="text"] {width: 132px;height: 22px;}
+.particulars .frame .orderSearch .FilterList-om p span select {width: 140px;height: 24px;border: 1px solid #CCCCCC;}
+.particulars .frame .orderSearch .FilterList-om p button {border: none;position: initial;margin-left: 15%;width: 80px;height: 32px;background-color: #0A7EE3;color: #FFFFFF;font-size: 14px;}
+
+.particulars .frame .om-list {width: 100%;text-align: center;}
+.particulars .frame .om-list thead tr {height: 46px;background-color: #EBEFF8;}
+.particulars .frame .om-list tbody tr {height: 86px;background-color: #F5F5F5;border-top: 2px solid #FFF;}
+.particulars .frame .om-list tbody tr:hover {background-color: #C1DEF8!important;}
+.particulars .frame .om-list tbody td span {line-height: 40px;position: relative;}
+.particulars .frame .om-list tbody td i {display: block;font-size: 12px;}
+.particulars .frame .om-list tbody tr img {width: 62px;height: 76px;}
+.particulars .frame .om-list .xiang {display: block;position: absolute;width: 24px;height: 16px;line-height: 16px;text-align: center;font-size: 12px;color: #FFFFFF;background-color: #FEBC0C;top: -9px;right: -53%;display: none}
+
+
+.frame .om-list thead tr {height: 46px;background-color: #EBEFF8;}
+.frame .om-list tbody tr {cursor: pointer;height: 46px;background-color: #F5F5F5;border-top: 2px solid #FFFFFF;}
+.frame .om-list tbody tr:hover {background-color: #C1DEF8!important;}

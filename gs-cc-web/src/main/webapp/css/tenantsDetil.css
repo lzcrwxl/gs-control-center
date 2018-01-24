@@ -1,0 +1,146 @@
+/* 宸︿晶瀵艰埅鏍� */
+.naviLeft {width: 188px;background-color: #EBEFF8;position: absolute;}
+.naviLeft ul {margin-top: 30px;}
+.naviLeft ul li {height: 44px;line-height: 44px;vertical-align: top;cursor: pointer;margin-bottom: 5px;}
+.naviLeft ul .nl_on {background-color: #FFF;}
+.naviLeft ul .nl_on>a {color: #0A7EE3!important;}
+.naviLeft ul .nl_on>a em {background-image: url(../image/Satyr_on.png)!important;}
+.naviLeft ul li a {display: block;width: 128px;padding: 0 40px;text-align: right; font-size: 16px;position: relative;}
+.naviLeft ul li a:visited {color: #333333;}
+.naviLeft ul li a em {background-image: url(../image/Satyr.png);position: absolute;top: 12px;left: 40px;}
+.naviLeft ul li .ddgl em {display:inline-block;background-position: -100px 0px; width: 20px; height: 20px;}
+.naviLeft ul li .yygl em {display:inline-block;background-position: -120px 0px; width: 20px; height: 20px;}
+.naviLeft ul li:hover a em {background-image: url(../image/Satyr_on.png)!important;}
+.naviLeft ul li:hover {background-color: #FFF;}
+.naviLeft ul li:hover>a {color: #0A7EE3;}
+.naviLeft ul .beeshare-btn div {display: none;}
+.naviLeft ul .beeshare-btn div a {display: block;height: 36px;line-height: 36px;background-color: #FFFFFF;margin-top: 1px;}
+.naviLeft ul .beeshare-btn div a:hover {color: #0A7EE3;}
+
+.orderDetails {margin-left: 188px; height:100%;width:88%;background-color: #DBE6F0;}
+.orderDetails .infoCard {padding: 0 15px 15px 15px;background-color: #FFFFFF;box-shadow:3px 3px 5px 2px #C3D5E4;position: relative;}
+.orderDetails .infoCard .pending {float: right;color: #FF9C00;margin-top: 15px;}
+.orderDetails .infoCard .title {padding-top: 15px;}
+.orderDetails .infoCard .edit {margin-top: 15px;}
+
+
+.orderDetails .infoCard .frame .nopass .nopaths {padding: 15px 10px 0 5px;}
+/* 鍩烘湰淇℃伅 */
+.orderDetails .infoCard .reservation-info {border-top: 1px solid #F5F5F5;margin: 10px 0 5px 0;}
+.orderDetails .infoCard .reservation-info p {margin-top: 12px;}
+.orderDetails .infoCard .reservation-info p i{margin-left: 30px;text-align: right;line-height:15px;}
+/* 璐﹀彿淇℃伅 */
+.orderDetails .infoCard .client-info {padding-top: 5px;border-top: 1px solid #F5F5F5;margin: 10px 0 5px 0;}
+.orderDetails .infoCard .client-info p {margin-top: 10px; }
+.orderDetails .infoCard .client-info p i {display: inline-block;}
+.orderDetails .infoCard .client-info p label {display: inline-block;width:122px;text-align: right;margin-right: 8px;}
+/* 閾惰缁撶畻淇℃伅 */
+.orderDetails .infoCard .bank-info {padding-top: 5px;border-top: 1px solid #F5F5F5;margin: 10px 0 5px 0;}
+.orderDetails .infoCard .bank-info p {margin-top: 10px; }
+.orderDetails .infoCard .bank-info p i {display: inline-block;}
+.orderDetails .infoCard .bank-info p label {display: inline-block;width:122px;text-align: right;margin-right: 8px;}
+/* 涓讳綋淇℃伅 */
+.orderDetails .infoCard .base-info {padding-top: 5px;border-top: 1px solid #F5F5F5;margin: 10px 0 5px 0;}
+.orderDetails .infoCard .base-info p {margin-top: 10px; }
+.orderDetails .infoCard .base-info p i {display: inline-block;}
+.orderDetails .infoCard .base-info p label {display: inline-block;width: 122px;text-align: right;margin-right: 8px;}
+/* 閿�鍞俊鎭� */
+.orderDetails .infoCard .sale-info {padding-top: 5px;border-top: 1px solid #F5F5F5;margin: 10px 0 5px 0;}
+.orderDetails .infoCard .sale-info p {margin-top: 10px; }
+.orderDetails .infoCard .sale-info p i {display: inline-block;}
+.orderDetails .infoCard .sale-info p label {display: inline-block;width:122px;text-align: right;margin-right: 8px;}
+
+
+.orderDetails .infoCard .ae-frame {border: 1px solid #CCCCCC!important;background-color: #FAFAFA;}
+.orderDetails .infoCard input[type="text"] {width: 134px;height: 18px;}
+.orderDetails .infoCard select {width: 142px;height: 20px;border: 1px solid #CCCCCC;}
+
+
+.orderDetails .bottom-navi {margin-left:445px; height: 52px;}
+.orderDetails .bottom-navi ul {height: 100%;text-align: center;float: left;}
+.orderDetails .bottom-navi ul li {height: 100%;float: left;width: 120px;cursor: pointer;}
+.orderDetails .bottom-navi ul li input {display: block;height: 32px;line-height: 32px;color: #3371c2;width: 118px;margin-top: 25px;font-size: 16px;font-weight: bold;}
+.orderDetails .bottom-navi ul li a {display: block;height: 32px;line-height: 32px;color: #3371c2;width: 118px;margin-top: 25px;font-size: 16px;font-weight: bold;}
+.orderDetails .bottom-navi ul li:first-child input {margin-left: 1px;border: none;}
+.orderDetails .bottom-navi ul li:first-child a {margin-left: 1px;border: none;}
+.orderDetails .bottom-navi ul li:hover {}
+.orderDetails .bottom-navi ul li:hover input {color:#ff8080 ;}
+.orderDetails .bottom-navi ul li:hover a {color:#ff8080 ;}
+.cancel {
+	display:none;
+    background-color: #fff;
+    width: 400px;
+    height: 200px;
+    position: fixed;
+    left: 50%;
+    margin-left: -240px;
+    top: 50%;
+    margin-top: -115px;
+    z-index: 101;
+    padding: 15px 40px;
+}
+.cancel h1 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-left: -20px;
+    margin-bottom: 12px;
+}
+.cancel textarea {
+    width: 100%;
+    height: 100px;
+    outline: none;
+    resize: none;
+    text-indent: 10px;
+    line-height: 22px;
+    font-size: 14px;
+}
+.submit {
+    text-align: center;
+}
+.submit span {
+	display:inline-block;
+    border: 1px solid #3c3a39;
+    width: 80px;
+    height: 34px;
+	line-height:34px;
+	cursor: pointer;
+}
+.ok_bt {
+    background-color: #3c3a39;
+    color: #fff;
+    margin-right: 56px;
+}
+.cancel_bt {
+    background-color: #fff;
+}
+.promt {
+    height: 20px;
+    color: red;
+    padding-left: 10px;
+}
+.prompt_sp{
+    color: red;
+    margin-left: 10px;
+}
+/* 瀹℃牳涓嶉�氳繃鏍峰紡 */
+/* 瀹℃牳淇℃伅 */
+.orderDetails .infoCard .nopass #nopassInfo  {height:30%;}
+.orderDetails .infoCard .nopass .nopass-info {padding-top: 5px;border-top: 1px solid #F5F5F5;margin: 10px 0 5px 0;}
+.orderDetails .infoCard .nopass .nopass-info p {margin-top: 10px; }
+.orderDetails .infoCard .nopass .nopass-info p i {display: inline-block;}
+.orderDetails .infoCard .nopass .nopass-info p label {display: inline-block;width:122px;text-align: right;margin-right: 8px;}
+/* 鍩烘湰淇℃伅 */
+.orderDetails .infoCard .nopass #nopassBase  {height:30%;}
+.orderDetails .infoCard .nopass .nopassBase-info {padding-top: 5px;border-top: 1px solid #F5F5F5;margin: 10px 0 5px 0;}
+.orderDetails .infoCard .nopass .nopassBase-info p {margin-top: 10px; }
+.orderDetails .infoCard .nopass .nopassBase-info p i {display: inline-block;width: 30%;}
+.orderDetails .infoCard .nopass .nopassBase-info p label {display: inline-block;width:122px;text-align: right;margin-right: 8px;}
+.small{
+	width:100px;
+	height:100px;
+}
+.big{
+	width:300px;
+	height:300px;
+}
+

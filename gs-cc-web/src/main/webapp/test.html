@@ -1,0 +1,99 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+<title>证书真伪查询</title>
+<script type="text/javascript">
+/* $.ajax({
+    url: "/fbzkConsole_web/api/zscx/zscxcaptcha",
+    type: "post",
+    data: {},
+    dataType: "json",
+    success: function success(data) {
+        if(data.success){
+            if(data.code == 0){
+            	console.log(data.msg);
+            	$("#sdfsdfsd").attr("src","http://139.224.49.192/images/captcha/verifyCode.jpg");
+            }else{
+                console.log(data.msg);
+            } 	
+        }else{
+            console.log(data.msg);
+        }
+    }
+}); */
+/*  $.ajax({
+    url: "/fbzkConsole_web/api/zscx/zscxcaptcha",
+    type: "post",
+    data: {},
+    dataType: "json",
+    success: function success(data) {
+        if(data.success){
+            if(data.code == 0){
+            	console.log(data.msg);
+            	//$("#sdfsdfsd").attr("src","http://139.224.49.192/images/captcha/verifyCode.jpg");
+            }else{
+                console.log(data.msg);
+            } 	
+        }else{
+            console.log(data.msg);
+        }
+    }
+}); */ 
+/* $(function(){
+$(".financialQuery button").click(function(){
+	var idcard = $(".financialQuery input[name='idcard']").val();
+	var name = $(".financialQuery input[name='name']").val();
+	var qtzjhm = $(".financialQuery input[name='qtzjhm']").val();
+	var sj_mima1 = $(".financialQuery input[name='sj_mima1']").val();
+	$.ajax({
+        url: "/fbzkConsole_web/api/zscx/zscxCheck",
+        type: "post",
+        data: { idcard:idcard,
+        	name:name,
+        	sj_mima1:sj_mima1
+        	},
+        dataType: "json",
+        success: function success(data) {
+            if(data.success){
+                if(data.code == 0){
+                	console.log(data.msg);
+                }else{
+                    console.log(data.msg);
+                }
+            }else if(data.code==999010){
+                console.log(data.msg);
+            }
+        }
+    });
+});
+}); */
+$(function(){
+			$(".pass").click(function(){
+				alert(0);
+				$("#check_m").submit(function(){
+					 alert("111");
+				});
+			});
+});
+</script>
+</head>
+<body>
+<div class="financialQuery">
+<form action="/fbzkConsole_web/api/tenants/tenantsPass" method="post" enctype="multipart/form-data" id="check_m">
+身份证号：<input name="idcard" type="text" value="" />
+ 姓名：<input name="name" type="text" value="" /> 
+
+ 其他证件：<input name="qtzjhm" type="text" value="" />
+ 职业资格证号：<input name="zshm" type="text" value=""/> 
+请输入效验码：<input name="sj_mima1" type="text" value=""/>
+<a class="pass">审核通过</a>
+</form>
+</div>
+<!-- <div class="frame">
+<img id="sdfsdfsd" src="http://www.12333sh.gov.cn/wsbs/zypxjd/jnjd/jdcx/zscx/Bmblist2.jsp?dt="+Math.random()" />
+</div> -->
+</body>
+</html>
